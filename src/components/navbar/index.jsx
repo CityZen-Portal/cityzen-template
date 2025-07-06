@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
+import brandIcon from "../../assets/img/navbar/brand-logo.png"
 // import {
 //   IoMdNotificationsOutline,
 //   IoMdInformationCircleOutline,
