@@ -3,7 +3,7 @@ import HelpCard from '../components/HelpCard'
 import { Link } from 'react-router-dom'
 import { MdHistory, MdDescription } from "react-icons/md";
 
-const Home = () => {
+const Help_Desk_Home = () => {
   return (
     <div className="mt-5">
         <div className='flex justify-start gap-4'>
@@ -26,4 +26,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Help_Desk_Home
