@@ -14,7 +14,7 @@ const App = () => {
     //   <Route path="admin/*" element={<AdminLayout />} />
     // </Routes>
     <>
-    <Welcome/>
+    <AdminDashboard/>
     </>
   );
 };
