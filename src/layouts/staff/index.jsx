@@ -1,27 +1,30 @@
 import React from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "components/navbar";
-import AdminSidebar from "components/sidebar/AdminSidebar";
+import StaffSidebar from "components/sidebar/StaffSidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes.js";
 
-export default function Admin(props) {
+export default function Staff(props) {
   const { ...rest } = props;
   const location = useLocation();
   const [open, setOpen] = React.useState(true);
   const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
 
   React.useEffect(() => {
-    window.addEventListener("resize", () =>
-      window.innerWidth < 1200 ? setOpen(false) : setOpen(true)
-    );
+    const handleResize = () => {
+      window.innerWidth < 1200 ? setOpen(false) : setOpen(true);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial value
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   React.useEffect(() => {
     getActiveRoute(routes);
   }, [location.pathname]);
 
   const getActiveRoute = (routes) => {
-    let activeRoute = "Main Dashboard";
     for (let i = 0; i < routes.length; i++) {
       if (
         window.location.href.indexOf(
@@ -31,8 +34,8 @@ export default function Admin(props) {
         setCurrentRoute(routes[i].name);
       }
     }
-    return activeRoute;
   };
+
   const getActiveNavbar = (routes) => {
     let activeNavbar = false;
     for (let i = 0; i < routes.length; i++) {
@@ -44,9 +47,10 @@ export default function Admin(props) {
     }
     return activeNavbar;
   };
+
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/staff") {
         return (
           <Route path={`/${prop.path}`} element={prop.component} key={key} />
         );
@@ -59,7 +63,7 @@ export default function Admin(props) {
   document.documentElement.dir = "ltr";
   return (
     <div className="flex h-full w-full">
-      <AdminSidebar open={open} onClose={() => setOpen(false)} />
+      <StaffSidebar open={open} onClose={() => setOpen(false)} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}
@@ -70,7 +74,7 @@ export default function Admin(props) {
           <div className="h-full">
             <Navbar
               onOpenSidenav={() => setOpen(true)}
-              logoText={"Horizon UI Tailwind React"}
+              logoText={"CityZen Staff Portal"}
               brandText={currentRoute}
               secondary={getActiveNavbar(routes)}
               {...rest}
@@ -81,7 +85,7 @@ export default function Admin(props) {
 
                 <Route
                   path="/"
-                  element={<Navigate to="/admin/default" replace />}
+                  element={<Navigate to="/staff/dashboard" replace />}
                 />
               </Routes>
             </div>
