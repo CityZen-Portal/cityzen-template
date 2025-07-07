@@ -3,6 +3,7 @@ import React from "react";
 // Citizen Views
 import CitizenDashboard from "views/citizen/dashboard/components";
 import Service from "views/citizen/services";
+import Grievance_Management from "views/citizen/grievance-management";
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -25,6 +26,14 @@ const routes = [
     path: "dashboard",
     icon: <MdHome className="h-6 w-6" />,
     component: <CitizenDashboard/>,
+  },
+  
+  {
+    name: "Grievance Management",
+    layout: "/citizen",
+    path: "grievance-management",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Grievance_Management />,
   },
   {
     name: "Services",
