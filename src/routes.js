@@ -7,10 +7,10 @@ import Service from "views/citizen/services";
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
 import AdminProfile from "views/admin/profile";
-
+import AdminServices from "views/admin/services/index.jsx";
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
-
+import ManageServices from "views/admin/services/component/ManageServices";
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -41,7 +41,14 @@ const routes = [
     icon: <MdDashboard className="h-6 w-6" />,
     component: <AdminDashboard />,
   },
-  
+    {
+    name: "Admin Services",
+    layout: "/admin",
+    path: "services",
+    icon: <MdDashboard className="h-6 w-6" />,
+    component: <AdminServices />,
+  },
+
   // Staff Routes
   {
     name: "Staff Dashboard",
