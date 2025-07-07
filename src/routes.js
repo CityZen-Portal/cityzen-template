@@ -16,7 +16,15 @@ import StaffDashboard from "views/staff/dashboard";
 import SignIn from "views/auth/SignIn";
 
 // Icons
-import { MdHome, MdLock, MdPerson, MdDashboard, MdTableView, MdAdminPanelSettings, MdChatBubble } from "react-icons/md";
+import {
+  MdHome,
+  MdLock,
+  MdPerson,
+  MdDashboard,
+  MdTableView,
+  MdAdminPanelSettings,
+  MdChatBubble,
+} from "react-icons/md";
 
 const routes = [
   // Citizen Routes
@@ -24,10 +32,10 @@ const routes = [
     name: " Dashboard",
     layout: "/citizen",
     path: "dashboard",
-    icon: <MdChatBubble className="h-6 w-6" />,
-    component: <CitizenDashboard/>,
+    icon: <MdDashboard className="h-6 w-6" />,
+    component: <CitizenDashboard />,
   },
-  
+
   {
     name: "Grievance Management",
     layout: "/citizen",
@@ -40,7 +48,7 @@ const routes = [
     layout: "/citizen",
     path: "Services",
     icon: <MdHome className="h-6 w-6" />,
-    component: <Service/>,
+    component: <Service />,
   },
   // Admin Routes
   {
@@ -50,7 +58,7 @@ const routes = [
     icon: <MdDashboard className="h-6 w-6" />,
     component: <AdminDashboard />,
   },
-  
+
   // Staff Routes
   {
     name: "Staff Dashboard",
@@ -59,7 +67,7 @@ const routes = [
     icon: <MdAdminPanelSettings className="h-6 w-6" />,
     component: <StaffDashboard />,
   },
-  
+
   // Auth Routes
   {
     name: "Sign In",
@@ -67,7 +75,7 @@ const routes = [
     path: "sign-in",
     icon: <MdLock className="h-6 w-6" />,
     component: <SignIn />,
-  }
+  },
 ];
 
 export default routes;
