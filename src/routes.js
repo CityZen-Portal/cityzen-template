@@ -1,7 +1,7 @@
 import React from "react";
 
 // Citizen Views
-import CitizenDashboard from "views/citizen/dashboard/components";
+import CitizenDashboard from "./views/citizen/dashboard/index";
 import Service from "views/citizen/services";
 // Admin Views
 import AdminDashboard from "views/admin/default";
@@ -15,15 +15,15 @@ import StaffDashboard from "views/staff/dashboard";
 import SignIn from "views/auth/SignIn";
 
 // Icons
-import { MdHome, MdLock, MdPerson, MdDashboard, MdTableView, MdAdminPanelSettings } from "react-icons/md";
+import { MdHome, MdLock, MdPerson, MdDashboard, MdTableView, MdAdminPanelSettings, MdChatBubble } from "react-icons/md";
 
 const routes = [
   // Citizen Routes
   {
-    name: "Citizen Dashboard",
+    name: " Dashboard",
     layout: "/citizen",
     path: "dashboard",
-    icon: <MdHome className="h-6 w-6" />,
+    icon: <MdChatBubble className="h-6 w-6" />,
     component: <CitizenDashboard/>,
   },
   {
