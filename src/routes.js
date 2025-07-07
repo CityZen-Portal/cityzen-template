@@ -10,6 +10,7 @@ import AdminProfile from "views/admin/profile";
 
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
+import StaffService from "views/staff/services";
 
 // Auth Views
 import SignIn from "views/auth/SignIn";
@@ -49,6 +50,13 @@ const routes = [
     path: "dashboard",
     icon: <MdAdminPanelSettings className="h-6 w-6" />,
     component: <StaffDashboard />,
+  },
+  {
+    name: "Service Requests",
+    layout: "/staff",
+    path: "services",
+    icon: <MdTableView className="h-6 w-6" />,
+    component: <StaffService />,
   },
   
   // Auth Routes
