@@ -1,43 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ServiceManagement from './component/ServiceManagement';
 import StaffManagement from './component/StaffManagement';
 import FeedbackAnalytics from './component/FeedbackAnalytics';
-import ManageServices from './component/ManageServices';
-import ManageStaffs from './component/ManageStaffs';
-import ViewTasks from './component/ViewTasks';
-import ViewSchedule from './component/ViewSchedule';
 
 const AdminServices = () => {
-  const [view, setView] = useState('main');
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Check if we're on the main services page
+  const isMainView = location.pathname === '/admin/services';
 
   return (
     <div className="p-6 space-y-8 min-h-screen bg-gray-50 text-gray-900 dark:bg-navy-700">
-      {view === 'main' && (
+      {isMainView && (
         <>
-          <ServiceManagement onManageClick={() => setView('manageServices')} />
+          <ServiceManagement onManageClick={() => navigate('/admin/services/manage')} />
           <StaffManagement
-            onAddStaffs={() => setView('manageStaffs')}
-            onViewTasks={() => setView('viewTasks')}
-            onViewSchedule={() => setView('viewSchedule')}
+            onAddStaffs={() => navigate('/admin/services/staff')}
+            onViewTasks={() => navigate('/admin/services/tasks')}
+            onViewSchedule={() => navigate('/admin/services/schedule')}
           />
           <FeedbackAnalytics />
         </>
-      )}
-
-      {view === 'manageServices' && (
-        <ManageServices goBack={() => setView('main')} />
-      )}
-
-      {view === 'manageStaffs' && (
-        <ManageStaffs goBack={() => setView('main')} />
-      )}
-
-      {view === 'viewTasks' && (
-        <ViewTasks goBack={() => setView('main')} />
-      )}
-
-      {view === 'viewSchedule' && (
-        <ViewSchedule goBack={() => setView('main')} />
       )}
     </div>
   );

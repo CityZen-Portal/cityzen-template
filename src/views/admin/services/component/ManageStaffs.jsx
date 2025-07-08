@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/solid';
 
 function ManageStaffs() {
+  const navigate = useNavigate();
   const [staffs, setStaffs] = useState([
     { id: 1, name: 'John Doe', role: 'Cleaner', contact: '+1234567890' },
     { id: 2, name: 'Jane Smith', role: 'Gardener', contact: '+0987654321' },
@@ -38,6 +40,9 @@ function ManageStaffs() {
     <div className='mt-12 mb-8 flex flex-col gap-12'>
       <div className='bg-white shadow-lg rounded-xl'>
         <div className='bg-blue-600 p-6 rounded-t-xl'>
+          <button onClick={() => navigate('/admin/services')} className="text-white hover:text-gray-200 transition-colors flex items-center gap-1 mb-2">
+            <span>←</span> Back
+          </button>
           <h2 className='text-white text-lg font-semibold'>Manage Staff Members</h2>
         </div>
         <div className='overflow-x-auto p-6'>
