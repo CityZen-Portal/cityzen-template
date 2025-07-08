@@ -44,7 +44,7 @@ const routes = [
     icon: <MdDashboard className="h-6 w-6" />,
     component: <CitizenDashboard />,
   },
-
+  // Help Desk
   {
     name: "Help Desk",
     layout: "/citizen",
