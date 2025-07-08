@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PlusIcon, MapPinIcon, ClockIcon, UserIcon } from '@heroicons/react/24/solid';
 
 function ViewTasks() {
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -70,6 +72,9 @@ function ViewTasks() {
     <div className="mt-12 mb-8 flex flex-col gap-12 px-4">
       <div className="bg-white shadow rounded-lg">
         <div className="bg-blue-600 p-4 rounded-t-lg">
+          <button onClick={() => navigate('/admin/services')} className="text-white hover:text-gray-200 transition-colors flex items-center gap-1 mb-2">
+            <span>←</span> Back
+          </button>
           <h2 className="text-white text-lg font-semibold">Task Assignments</h2>
         </div>
         <div className="p-4 overflow-x-auto">

@@ -9,6 +9,9 @@ import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
 import AdminProfile from "views/admin/profile";
 import AdminServices from "views/admin/services/index.jsx";
+import ManageStaffs from "views/admin/services/component/ManageStaffs";
+import ViewTasks from "views/admin/services/component/ViewTasks";
+import ViewSchedule from "views/admin/services/component/ViewSchedule";
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
 
@@ -71,6 +74,33 @@ const routes = [
     path: "services",
     icon: <MdDashboard className="h-6 w-6" />,
     component: <AdminServices />,
+    // Define nested routes for Admin Services
+    children: [
+      {
+        name: "Manage Services",
+        layout: "/admin",
+        path: "services/manage",
+        component: <ManageServices />
+      },
+      {
+        name: "Manage Staff",
+        layout: "/admin",
+        path: "services/staff",
+        component: <ManageStaffs />
+      },
+      {
+        name: "View Tasks",
+        layout: "/admin",
+        path: "services/tasks",
+        component: <ViewTasks />
+      },
+      {
+        name: "View Schedule",
+        layout: "/admin",
+        path: "services/schedule",
+        component: <ViewSchedule />
+      }
+    ]
   },
 
   // Staff Routes

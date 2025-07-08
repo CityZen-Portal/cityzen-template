@@ -1,7 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ManageServices = ({ goBack }) => {
+const ManageServices = () => {
+  const navigate = useNavigate();
   const [addServices, setAddServices] = useState(false);
   const [deleteServices, setDeleteServices] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const ManageServices = ({ goBack }) => {
       <div className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm ">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <button onClick={goBack} className="text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-1 mb-2">
+            <button onClick={() => navigate('/admin/services')} className="text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-1 mb-2">
               <span>←</span> Back
             </button>
             <h2 className="text-2xl font-bold text-gray-800">Manage Services</h2>
