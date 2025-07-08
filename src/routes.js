@@ -20,6 +20,7 @@ import StaffService from "views/staff/services";
 import SignIn from "views/auth/SignIn";
 
 // Icons
+
 import {
   MdHome,
   MdLock,
@@ -28,6 +29,7 @@ import {
   MdTableView,
   MdAdminPanelSettings,
   MdChatBubble,
+  MdLiveHelp,
 } from "react-icons/md";
 
 const routes = [
@@ -41,10 +43,10 @@ const routes = [
   },
 
   {
-    name: "Grievance Management",
+    name: "Help Desk",
     layout: "/citizen",
-    path: "grievance-management",
-    icon: <MdHome className="h-6 w-6" />,
+    path: "help-desk",
+    icon: <MdLiveHelp className="h-6 w-6" />,
     component: <Grievance_Management />,
   },
   {
