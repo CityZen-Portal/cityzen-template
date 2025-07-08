@@ -1,8 +1,8 @@
 import React from 'react'
 import Help_Desk_Home from './pages/Help_Desk_Home'
 
-const Grievance_Management = () => {
+const HelpDesk = () => {
   return (<Help_Desk_Home />)
 }
 
-export default Grievance_Management
+export default HelpDesk
