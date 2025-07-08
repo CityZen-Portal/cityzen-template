@@ -1,8 +1,9 @@
+import { others } from '@chakra-ui/system';
 import React from 'react'
 import { useState } from 'react';
 function ComplaintForm() {
     const [complaintType, setComplaintType] = useState('');
-    conts [others,setOther] = useState('');
+    const [others,setOthers] = useState('');
   return (
     <>
     <div className='bg-white max-w-xl p-6 rounded-md mt-xl  items-center justify-center <div className="bg-gray-50 dark:bg-navy-400 p-4 rounded-xl mb-6">'>
@@ -49,7 +50,12 @@ function ComplaintForm() {
         <option value="Corruption">Corruption</option>
         <option value="Other">Other</option>
       </select>
-      {/* {complaintType === 'Other' && } */}
+      {complaintType === 'Other' && (<div className='mt-2'>
+        <label className='block font-bold'>Please specify the issue</label>
+        <textarea rows='3' value={others} onChange={(e) => setOthers(e.target.value)}
+        placeholder='Describe your complaint' className='w-full border px-4 py-2 rounded-md focus-outline-none focus:ring-2 focus:ring-blue-400' required
+        ></textarea>
+      </div>)}
       <div>
         <label className='block font-bold'>Title</label>
         <input type="text" className='w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900' />
@@ -59,8 +65,13 @@ function ComplaintForm() {
         <input type="text" className='w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900' />
       </div>
       <div>
-        <label className='block font-bold'>Image</label>
-        <input type="file" className='w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-900' />
+        <label className='block font-bold'>Upload Image</label>
+        <input type="file" accept='image/*' className="w-full text-sm text-gray-500
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-md file:border-0
+              file:text-sm file:font-semibold
+              file:bg-blue-600 file:text-white
+              hover:file:bg-blue-700" />
       </div>
     </form>
     <div>
