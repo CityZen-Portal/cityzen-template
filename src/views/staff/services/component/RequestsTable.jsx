@@ -168,7 +168,7 @@ const RequestsTable = ({
                       </div>
                     </th>
                   ))}
-                  {/* <th className="py-4 px-4 text-left text-sm font-bold text-navy-700 dark:text-white">Actions</th> */}
+                  <th className="py-4 px-4 text-left text-sm font-bold text-navy-700 dark:text-white">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -204,7 +204,7 @@ const RequestsTable = ({
                         <td className="py-4 px-4 text-sm text-gray-600 dark:text-gray-300">{request.staffName}</td>
                       </>
                     )}
-                    {/* <td className="py-4 px-4 text-sm">
+                    <td className="py-4 px-4 text-sm">
                       <div className="flex space-x-2">
                         <button 
                           onClick={() => handleViewDetails(request)}
@@ -226,7 +226,7 @@ const RequestsTable = ({
                           </button>
                         )}
                       </div>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>
