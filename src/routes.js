@@ -3,7 +3,7 @@ import React from "react";
 // Citizen Views
 import CitizenDashboard from "views/citizen/dashboard/components";
 import Service from "views/citizen/services";
-import Grievance_Management from "views/citizen/grievance-management";
+import HelpDesk from "views/citizen/help-desk";
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -33,7 +33,7 @@ const routes = [
     layout: "/citizen",
     path: "help-desk",
     icon: <MdLiveHelp className="h-6 w-6" />,
-    component: <Grievance_Management />,
+    component: <HelpDesk />,
   },
   {
     name: "Services",
