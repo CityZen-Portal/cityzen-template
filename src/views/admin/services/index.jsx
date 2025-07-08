@@ -8,7 +8,7 @@ const AdminServices = () => {
   const [view, setView] = useState('main');
 
   return (
-    <div className="p-6 space-y-8 min-h-screen bg-gray-50 text-gray-900">
+    <div className="p-6 space-y-8 min-h-screen bg-gray-50 text-gray-900 dark:bg-navy-700 ">
       {view === 'main' ? (
         <>
           <ServiceManagement onManageClick={() => setView('manage')} />
