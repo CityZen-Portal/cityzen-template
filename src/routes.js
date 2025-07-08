@@ -5,7 +5,7 @@ import CitizenDashboard from "./views/citizen/dashboard/index";
 import Service from "views/citizen/services";
 import Grievance_Management from "views/citizen/grievance-management";
 // Admin Views
-import AdminDashboard from "views/admin/default";
+import AdminDashboard from "./views/admin/dashboard/index.jsx";
 import AdminTables from "views/admin/tables";
 import AdminProfile from "views/admin/profile";
 import AdminServices from "views/admin/services/index.jsx";
@@ -63,7 +63,7 @@ const routes = [
     component: <AdminDashboard />,
   },
 
-    {
+  {
     name: "Admin Services",
     layout: "/admin",
     path: "services",
@@ -87,7 +87,7 @@ const routes = [
     icon: <MdTableView className="h-6 w-6" />,
     component: <StaffService />,
   },
-  
+
   // Auth Routes
   {
     name: "Sign In",
