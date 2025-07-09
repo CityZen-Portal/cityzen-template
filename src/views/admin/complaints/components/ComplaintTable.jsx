@@ -1,6 +1,6 @@
 import Rows from './Rows';
 
-const ComplaintTable = ({ complaints, changePage }) => {
+const ComplaintTable = ({ complaints }) => {
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -34,7 +34,7 @@ const ComplaintTable = ({ complaints, changePage }) => {
         <table className="w-full">
           <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
-              {['Complaint ID', 'Subject', 'Department', 'Date Logged', 'Status', 'Feedback'].map((heading, idx) => (
+              {['Complaint ID', 'Subject', 'Department', 'Date Logged', 'Status', 'View', 'Actions'].map((heading, idx) => (
                 <th
                   key={idx}
                   className="px-6 py-4 text-left text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0"
@@ -51,7 +51,6 @@ const ComplaintTable = ({ complaints, changePage }) => {
                 complaint={complaint}
                 getStatusColor={getStatusColor}
                 getStatusText={getStatusText}
-                changePage={changePage}
               />
             ))}
           </tbody>

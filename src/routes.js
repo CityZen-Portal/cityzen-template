@@ -3,7 +3,7 @@ import React from "react";
 // Citizen Views
 import CitizenDashboard from "./views/citizen/dashboard/index";
 import Service from "views/citizen/services";
-import HelpDesk from "views/citizen/help-desk/index";
+import HelpDesk from "views/citizen/help-desk";
 import ComplaintForm from "views/citizen/help-desk/pages/ComplaintForm";
 import ComplaintLog from "views/citizen/help-desk/pages/ComplaintLog";
 // Admin Views
@@ -14,6 +14,7 @@ import AdminServices from "views/admin/services/index.jsx";
 import ManageStaffs from "views/admin/services/component/ManageStaffs";
 import ViewTasks from "views/admin/services/component/ViewTasks";
 import ViewSchedule from "views/admin/services/component/ViewSchedule";
+import ComplaintManagement from "views/admin/complaints";
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
 
@@ -118,6 +119,13 @@ const routes = [
         component: <ViewSchedule />
       }
     ]
+  },
+  {
+    name: "Complaint Management",
+    layout: "/admin",
+    path: "complaint-management",
+    icon: <MdDashboard className="h-6 w-6" />,
+    component: <ComplaintManagement />,
   },
 
   // Staff Routes

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ComplaintTable from '../components/ComplaintTable.jsx';
 
-const ComplaintLog = () => {
+const ComplaintLog = ({changePage}) => {
   const [complaints] = useState([
     {
       id: '0001',
@@ -30,13 +30,23 @@ const ComplaintLog = () => {
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h1>
-        <p className="text-gray-600 dark:text-gray-300">View your submitted complaints and their status</p>
+    <div className="relative flex justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
+      <div className="absolute top-6 left-6">
+        <button
+          onClick={() => changePage("Home")}
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 shadow-md"
+        >
+        Back
+        </button>
       </div>
+      <div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h1>
+          <p className="text-gray-600 dark:text-gray-300">View your submitted complaints and their status</p>
+        </div>
 
-      <ComplaintTable complaints={complaints} />
+        <ComplaintTable complaints={complaints} changePage={changePage} />
+      </div>
     </div>
   );
 };

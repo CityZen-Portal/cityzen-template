@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rows = ({ complaint, changePage, getStatusColor, getStatusText }) => {
+const Rows = ({ complaint, getStatusColor, getStatusText }) => {
   return (
     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
       <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{complaint.id}</td>
@@ -13,17 +13,10 @@ const Rows = ({ complaint, changePage, getStatusColor, getStatusText }) => {
         </span>
       </td>
       <td className="px-6 py-4">
-        <button
-          onClick={() => changePage("Feedback")}
-          disabled={complaint.status !== 'completed'}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            complaint.status === 'completed'
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          Give Feedback
-        </button>
+      </td>
+      <td className="px-6 py-4 flex">
+        <button>Edit Status</button>
+        <button>Take Resolution</button>
       </td>
     </tr>
   );
