@@ -34,7 +34,7 @@ const ComplaintTable = ({ complaints }) => {
         <table className="w-full">
           <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
-              {['Complaint ID', 'Subject', 'Department', 'Date Logged', 'Status', 'View', 'Actions'].map((heading, idx) => (
+              {['Complaint ID', 'Subject', 'Department', 'Location', 'Date Logged', 'Status', 'Actions'].map((heading, idx) => (
                 <th
                   key={idx}
                   className="px-6 py-4 text-left text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0"

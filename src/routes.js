@@ -36,6 +36,7 @@ import {
   MdAdminPanelSettings,
   MdChatBubble,
   MdLiveHelp,
+  MdAssignment,
 } from "react-icons/md";
 
 const routes = [
@@ -46,6 +47,13 @@ const routes = [
     path: "dashboard",
     icon: <MdDashboard className="h-6 w-6" />,
     component: <CitizenDashboard />,
+  },
+  {
+    name: "Services",
+    layout: "/citizen",
+    path: "Services",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Service />,
   },
   // Help Desk
   {
@@ -69,13 +77,6 @@ const routes = [
         component: <ComplaintLog />
       }
     ]
-  },
-  {
-    name: "Services",
-    layout: "/citizen",
-    path: "Services",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <Service />,
   },
   // Admin Routes
   {
@@ -124,7 +125,7 @@ const routes = [
     name: "Complaint Management",
     layout: "/admin",
     path: "complaint-management",
-    icon: <MdDashboard className="h-6 w-6" />,
+    icon: <MdAssignment className="h-6 w-6" />,
     component: <ComplaintManagement />,
   },
 
