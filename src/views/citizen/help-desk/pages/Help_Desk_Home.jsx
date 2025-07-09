@@ -8,7 +8,7 @@ const Help_Desk_Home = () => {
     <div className="mt-5">
         <div className='flex justify-start gap-4'>
             <Link to={`complaint-form`}>
-                <HelpCard 
+                <HelpCard
                     title={'Complaint Form'}
                     description={'Lodge a new civic complaint in your area by filling out the form'}
                     Icon={MdDescription}

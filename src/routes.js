@@ -3,7 +3,7 @@ import React from "react";
 // Citizen Views
 import CitizenDashboard from "./views/citizen/dashboard/index";
 import Service from "views/citizen/services";
-import Grievance_Management from "views/citizen/grievance-management";
+import HelpDesk from "views/citizen/help-desk";
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -18,8 +18,11 @@ import StaffDashboard from "views/staff/dashboard";
 import ManageServices from "views/admin/services/component/ManageServices";
 import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
+
 import AddNews from "views/staff/news/components/AddNews";
 import ViewNews from "views/staff/news/components/ViewNews";
+
+import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -45,13 +48,13 @@ const routes = [
     icon: <MdDashboard className="h-6 w-6" />,
     component: <CitizenDashboard />,
   },
-
+  // Help Desk
   {
     name: "Help Desk",
     layout: "/citizen",
     path: "help-desk",
     icon: <MdLiveHelp className="h-6 w-6" />,
-    component: <Grievance_Management />,
+    component: <HelpDesk />,
   },
   {
     name: "Services",
@@ -121,6 +124,7 @@ const routes = [
     component: <StaffService />,
   },
   {
+
     name: "City News & Alerts",
     layout: "/staff",
     path: "news",
@@ -136,6 +140,14 @@ const routes = [
     ]
   }
   ,
+ {
+    name: "News Update",
+    layout: "/citizen",
+    path: "newsupdate",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <NewsUpdate/>,
+  },
+  
 
   // Auth Routes
   {
