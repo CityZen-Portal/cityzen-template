@@ -34,10 +34,10 @@ const ComplaintTable = ({ complaints }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-navy-800 rounded-lg shadow-sm overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gray-100 dark:bg-navy-700">
+          <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
               {['Complaint ID', 'Subject', 'Department', 'Date Logged', 'Status', 'Feedback'].map((heading, idx) => (
                 <th
@@ -49,7 +49,7 @@ const ComplaintTable = ({ complaints }) => {
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 dark:divide-navy-600">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
             {complaints.map((complaint) => (
               <Rows
                 key={complaint.id}
