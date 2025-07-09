@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'components/card';
 import InputField from 'components/fields/InputField';
-import { useOutletContext } from 'react-router-dom';
-import { 
-  MdAdd, 
-  MdEdit, 
-  MdDelete, 
-  MdSave, 
-  MdCancel, 
-  MdTrendingUp, 
-  MdNotifications,
-  MdArrowBack
-} from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
+import {
+  MdAdd,
+  MdSave,
+  MdCancel
+} from 'react-icons/md';
 
-const AddNews = ({ newsItems, setNewsItems }) => {
-  const navigate = useNavigate();
+import { newsItems as staticNewsItems } from '../variables/data';
+
+const AddNews = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [newsItems, setNewsItems] = useState(staticNewsItems);
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -24,43 +22,46 @@ const AddNews = ({ newsItems, setNewsItems }) => {
     isBreaking: false,
     isTrending: false
   });
-
   const [isEditing, setIsEditing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
 
   useEffect(() => {
     if (id) {
-      const newsItem = newsItems.find(item => item.id === parseInt(id));
-      if (newsItem) {
+      const item = newsItems.find((n) => n.id === parseInt(id));
+      if (item) {
         setFormData({
-          title: newsItem.title,
-          content: newsItem.content,
-          author: newsItem.author,
-          isBreaking: newsItem.isBreaking,
-          isTrending: newsItem.isTrending
+          title: item.title,
+          content: item.content,
+          author: item.author,
+          isBreaking: item.isBreaking,
+          isTrending: item.isTrending
         });
         setIsEditing(true);
-        setCurrentId(parseInt(id));
+        setCurrentId(item.id);
       } else {
         navigate('../manage');
       }
+    } else {
+      setFormData({
+        title: '',
+        content: '',
+        author: '',
+        isBreaking: false,
+        isTrending: false
+      });
+      setIsEditing(false);
+      setCurrentId(null);
     }
   }, [id, newsItems, navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: checked
-    });
+    setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
   const handleAddNews = () => {
@@ -70,173 +71,148 @@ const AddNews = ({ newsItems, setNewsItems }) => {
       id: newsItems.length > 0 ? Math.max(...newsItems.map(item => item.id)) + 1 : 1,
       title: formData.title,
       content: formData.content,
-      date: new Date().toISOString().split('T')[0],
+      author: formData.author || 'Staff',
       isBreaking: formData.isBreaking,
       isTrending: formData.isTrending,
-      author: formData.author || 'Staff',
+      date: new Date().toISOString().split('T')[0],
       votes: 0,
       comments: []
     };
 
     setNewsItems([newItem, ...newsItems]);
-    resetForm();
-    navigate('../view');
+    navigate('/staff/news');
   };
 
   const handleUpdateNews = () => {
     if (!formData.title || !formData.content || currentId === null) return;
 
-    const updatedItems = newsItems.map(item => {
-      if (item.id === currentId) {
-        return {
-          ...item,
-          title: formData.title,
-          content: formData.content,
-          author: formData.author,
-          isBreaking: formData.isBreaking,
-          isTrending: formData.isTrending
-        };
-      }
-      return item;
-    });
+    const updatedItems = newsItems.map(item =>
+      item.id === currentId
+        ? { ...item, ...formData }
+        : item
+    );
 
     setNewsItems(updatedItems);
-    resetForm();
-    setIsEditing(false);
-    setCurrentId(null);
-    navigate('/staff/news/view');
-  };
-
-  const resetForm = () => {
-    setFormData({
-      title: '',
-      content: '',
-      author: '',
-      isBreaking: false,
-      isTrending: false
-    });
+    navigate('/staff/news');
   };
 
   const handleCancel = () => {
-    resetForm();
-    setIsEditing(false);
-    setCurrentId(null);
-    navigate('/staff/news/view');
+    navigate('/staff/news');
   };
 
   return (
-    <div className="flex flex-col gap-5">
-      <Card extra="p-6">
-        <div className="mb-6 flex items-center justify-between w-full">
-          <div>
-            <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-              {isEditing ? 'Edit News Post' : 'Create News Post'}
-            </h4>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              Share important updates with the community
-            </p>
-          </div>
-         
+    <div className="flex flex-col items-center justify-center p-4 sm:p-6 lg:p-10 w-full">
+      <Card extra="w-full max-w-3xl p-6 sm:p-8 shadow-xl rounded-2xl bg-white dark:bg-navy-700">
+        <button
+          onClick={() => navigate('/staff/news')}
+          className="text-blue-500 hover:text-blue-600 text-sm flex items-center gap-1 mb-4"
+        >
+          ← Back
+        </button>
+
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-navy-700 dark:text-white mb-1">
+            {isEditing ? 'Edit News Post' : 'Create News Post'}
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Share important updates with the community
+          </p>
         </div>
 
+        {/* Title */}
         <div className="mb-4">
-          <InputField
-            label="Title"
-            placeholder="Enter a catchy title"
-            id="title"
+          <label className="block text-sm font-medium mb-1 text-navy-700 dark:text-white">
+            Title
+          </label>
+          <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleInputChange}
+            placeholder="Enter a catchy title"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 dark:bg-transparent dark:text-white"
           />
         </div>
 
+        {/* Content */}
         <div className="mb-4">
-          <label className="text-sm text-navy-700 dark:text-white ml-3 font-bold">
+          <label className="block text-sm font-medium mb-1 text-navy-700 dark:text-white">
             Content
           </label>
           <textarea
-            placeholder="Share the details of your news..."
             name="content"
             value={formData.content}
             onChange={handleInputChange}
-            className="mt-2 flex h-32 w-full items-center justify-center rounded-xl border border-gray-200 bg-white/0 p-3 text-sm outline-none dark:!border-white/10 dark:text-white"
+            placeholder="Share the details of your news..."
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm h-28 resize-none focus:ring-2 focus:ring-brand-500 dark:bg-transparent dark:text-white"
           />
         </div>
 
+        {/* Author */}
         <div className="mb-4">
-          <InputField
-            label="Author/Department"
-            placeholder="Your name or department"
-            id="author"
+          <label className="block text-sm font-medium mb-1 text-navy-700 dark:text-white">
+            Author / Department
+          </label>
+          <input
             type="text"
             name="author"
             value={formData.author}
             onChange={handleInputChange}
+            placeholder="Your name or department"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 dark:bg-transparent dark:text-white"
           />
         </div>
 
-        <div className="mb-6 flex items-center space-x-6">
-          <div className="flex items-center">
+        {/* Checkboxes */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
+          <label className="flex items-center space-x-2 text-sm text-navy-700 dark:text-white">
             <input
               type="checkbox"
-              id="isBreaking"
               name="isBreaking"
               checked={formData.isBreaking}
               onChange={handleCheckboxChange}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4"
             />
-            <label htmlFor="isBreaking" className="ml-2 text-sm text-navy-700 dark:text-white">
-              Breaking News
-            </label>
-          </div>
-
-          <div className="flex items-center">
+            <span>Breaking News</span>
+          </label>
+          <label className="flex items-center space-x-2 text-sm text-navy-700 dark:text-white">
             <input
               type="checkbox"
-              id="isTrending"
               name="isTrending"
               checked={formData.isTrending}
               onChange={handleCheckboxChange}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4"
             />
-            <label htmlFor="isTrending" className="ml-2 text-sm text-navy-700 dark:text-white">
-              Trending News
-            </label>
-          </div>
+            <span>Trending News</span>
+          </label>
         </div>
 
-        <div className="flex justify-end space-x-2">
+        {/* Buttons */}
+        <div className="flex justify-end gap-3 mt-4">
           {isEditing ? (
             <>
               <button
                 onClick={handleUpdateNews}
-                className="linear rounded-xl bg-brand-500 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+                className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition-all"
               >
-                <div className="flex items-center gap-2">
-                  <MdSave />
-                  <span>Update</span>
-                </div>
+                <MdSave />
+                Update
               </button>
               <button
                 onClick={handleCancel}
-                className="linear rounded-xl border-2 border-red-500 px-4 py-2 text-base font-medium text-red-500 transition duration-200 hover:bg-red-500/10 active:bg-red-500/20 dark:border-red-400 dark:text-white dark:hover:bg-red-400/10 dark:active:bg-red-400/20"
+                className="flex items-center gap-2 border border-red-500 text-red-500 px-5 py-2 rounded-xl hover:bg-red-100 transition-all"
               >
-                <div className="flex items-center gap-2">
-                  <MdCancel />
-                  <span>Cancel</span>
-                </div>
+                <MdCancel />
+                Cancel
               </button>
             </>
           ) : (
             <button
               onClick={handleAddNews}
-              className="linear rounded-xl bg-brand-500 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+              className="flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-xl hover:bg-green-700 transition-all"
             >
-              <div className="flex items-center gap-2">
-                <MdAdd />
-                <span>Post News</span>
-              </div>
+              <MdAdd />
+              Post News
             </button>
           )}
         </div>

@@ -271,7 +271,7 @@ const ViewNews = ({ newsItems, setNewsItems }) => {
                             <span>{item.comments.length}</span>
                           </button>
                           <button
-                            onClick={() => navigate(`/staff/news/manage/${item.id}`)}
+                            onClick={() => navigate(`/staff/news/add/${item.id}`)}
                             className="rounded-full p-1 text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-navy-700"
                           >
                             <MdEdit className="h-4 w-4" />
