@@ -12,7 +12,7 @@ import AdminServices from "views/admin/services/index.jsx";
 import StaffDashboard from "views/staff/dashboard";
 import ManageServices from "views/admin/services/component/ManageServices";
 // Auth Views
-import SignIn from "views/auth/SignIn";
+import SignUp from "views/auth/Signup/get-started";
 
 // Icons
 import { MdHome, MdLock, MdPerson, MdDashboard, MdTableView, MdAdminPanelSettings } from "react-icons/md";
@@ -59,12 +59,14 @@ const routes = [
   },
   
   // Auth Routes
+  
+
   {
-    name: "Sign In",
+    name: "Sign Up",
     layout: "/auth",
-    path: "sign-in",
+    path: "sign-up",
     icon: <MdLock className="h-6 w-6" />,
-    component: <SignIn />,
+    component: <SignUp />,
   }
 ];
 
