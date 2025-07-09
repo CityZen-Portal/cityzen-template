@@ -16,10 +16,13 @@ import ViewSchedule from "views/admin/services/component/ViewSchedule";
 import StaffDashboard from "views/staff/dashboard";
 
 import ManageServices from "views/admin/services/component/ManageServices";
-
+import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
-import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 
+import AddNews from "views/staff/news/components/AddNews";
+import ViewNews from "views/staff/news/components/ViewNews";
+
+import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -69,7 +72,7 @@ const routes = [
     component: <AdminDashboard />,
   },
 
-    {
+  {
     name: "Admin Services",
     layout: "/admin",
     path: "services",
@@ -121,6 +124,23 @@ const routes = [
     component: <StaffService />,
   },
   {
+
+    name: "City News & Alerts",
+    layout: "/staff",
+    path: "news",
+    icon: <MdChatBubble className="h-6 w-6" />,
+    component: <CityNews/>,
+    children: [
+      {
+        name: "Manage News",
+        layout: "/staff",
+        path: "news/add",
+        component: <AddNews/>
+      }
+    ]
+  }
+  ,
+ {
     name: "News Update",
     layout: "/citizen",
     path: "newsupdate",
@@ -128,6 +148,7 @@ const routes = [
     component: <NewsUpdate/>,
   },
   
+
   // Auth Routes
   {
     name: "Sign In",
