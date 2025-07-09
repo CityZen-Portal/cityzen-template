@@ -1,5 +1,5 @@
 import React from 'react'
-import ComplaintLog from './pages/ComplaintLog'
+import ComplaintLog from './pages/ComplaintLog/ComplaintLog'
 
 const ComplaintManagement = () => {
   return (
