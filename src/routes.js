@@ -3,7 +3,9 @@ import React from "react";
 // Citizen Views
 import CitizenDashboard from "./views/citizen/dashboard/index";
 import Service from "views/citizen/services";
-import HelpDesk from "views/citizen/help-desk";
+import HelpDesk from "views/citizen/help-desk/index";
+import ComplaintForm from "views/citizen/help-desk/pages/ComplaintForm";
+import ComplaintLog from "views/citizen/help-desk/pages/ComplaintLog";
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -51,6 +53,21 @@ const routes = [
     path: "help-desk",
     icon: <MdLiveHelp className="h-6 w-6" />,
     component: <HelpDesk />,
+    // Define nested routes for Citizen Help Desk
+    children: [
+      {
+        name: "Complaint Form",
+        layout: "/citizen",
+        path: "help-desk/complaint/form",
+        component: <ComplaintForm />
+      },
+      {
+        name: "Complaint Log",
+        layout: "/citizen",
+        path: "help-desk/complaint/log",
+        component: <ComplaintLog />
+      }
+    ]
   },
   {
     name: "Services",

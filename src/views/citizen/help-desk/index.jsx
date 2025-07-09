@@ -1,8 +1,24 @@
 import React from 'react'
-import Help_Desk_Home from './pages/Help_Desk_Home'
+import HelpDeskHome from './pages/HelpDeskHome'
+import ComplaintForm from './pages/ComplaintForm'
+import ComplaintLog from './pages/ComplaintLog'
+import { useState } from 'react'
 
 const HelpDesk = () => {
-  return (<Help_Desk_Home />)
+  const [page, setPage] = useState("Home")
+
+  const changePage = (currPage) => {
+    setPage(currPage);
+  }
+
+  return (
+  <>
+    {page === "Home" ?
+      <HelpDeskHome changePage={changePage} />
+      : page === "Complaint Form" ? <ComplaintForm />
+        : <ComplaintLog />}
+  </>
+)
 }
 
 export default HelpDesk
