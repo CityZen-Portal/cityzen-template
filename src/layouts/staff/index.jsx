@@ -52,7 +52,21 @@ export default function Staff(props) {
     return routes.map((prop, key) => {
       if (prop.layout === "/staff") {
         return (
-          <Route path={`/${prop.path}`} element={prop.component} key={key} />
+          <React.Fragment key={key}>
+            <Route path={`/${prop.path}`} element={prop.component} />
+            {prop.children && prop.children.map((childRoute, childKey) => {
+              if (childRoute.layout === "/staff") {
+                return (
+                  <Route 
+                    path={`/${childRoute.path}`} 
+                    element={childRoute.component} 
+                    key={`${key}-${childKey}`} 
+                  />
+                );
+              }
+              return null;
+            })}
+          </React.Fragment>
         );
       } else {
         return null;
