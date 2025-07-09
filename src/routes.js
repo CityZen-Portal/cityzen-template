@@ -136,6 +136,12 @@ const routes = [
         layout: "/staff",
         path: "news/add",
         component: <AddNews/>
+      },
+      {
+        name: "Edit News ",
+        layout: "/staff",
+        path: "news/add/:id",
+        component: <AddNews/>
       }
     ]
   }
