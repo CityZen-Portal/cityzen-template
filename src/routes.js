@@ -18,6 +18,7 @@ import StaffDashboard from "views/staff/dashboard";
 import ManageServices from "views/admin/services/component/ManageServices";
 
 import StaffService from "views/staff/services";
+import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 
 // Auth Views
 import SignIn from "views/auth/SignIn";
@@ -118,6 +119,13 @@ const routes = [
     path: "services",
     icon: <MdTableView className="h-6 w-6" />,
     component: <StaffService />,
+  },
+  {
+    name: "News Update",
+    layout: "/citizen",
+    path: "newsupdate",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <NewsUpdate/>,
   },
   
   // Auth Routes
