@@ -27,13 +27,10 @@ function ComplaintForm() {
       return alert('Please describe the issue under "Other"');
     }
     if (!description.trim()) return alert('Please enter a description');
-    if(!imageFile){
-      return alert('Please upload the pdf');
-    }
+    if (!imageFile) return alert('Please upload the PDF');
     if (imageFile && imageFile.type !== 'application/pdf') {
-       return alert('Only PDF files are allowed.');
+      return alert('Only PDF files are allowed.');
     }
-
 
     console.log('Submitting complaint:', {
       location,
@@ -46,7 +43,6 @@ function ComplaintForm() {
       description,
       imageFile,
     });
-
     setLocation('');
     setAddress('');
     setWardNumber('');
@@ -61,7 +57,16 @@ function ComplaintForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
+      <div className="absolute top-6 left-6">
+        <button
+          onClick={() => window.history.back()}
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 shadow-md"
+        >
+        Back
+        </button>
+      </div>
+
       <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint Form</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -148,7 +153,7 @@ function ComplaintForm() {
           )}
 
           <div>
-            <label className="block font-bold">Title</label>
+            <label className="block font-bold">Issue</label>
             <input
               type="text"
               value={title}
@@ -168,7 +173,7 @@ function ComplaintForm() {
           </div>
 
           <div>
-            <label className="block font-bold mb-1">Upload Pdf</label>
+            <label className="block font-bold mb-1">Upload PDF</label>
             <input
               type="file"
               accept="application/pdf"
