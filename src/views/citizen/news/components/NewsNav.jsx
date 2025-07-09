@@ -45,16 +45,6 @@ function NewsNav() {
           </li>
           <li>
             <a href="#" className="hover:text-blue-600">
-              Local News
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-blue-600">
-              World
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-blue-600">
               Entertainment
             </a>
           </li>
