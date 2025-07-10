@@ -94,8 +94,8 @@ const StaffRow = ({ complaint, setComplaints }) => {
         
         {/* Slide-in Status Dropdown */}
         {isEditing && (
-          <div className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-out animate-slide-down">
-            <div className="p-2 space-y-1">
+          <div className="z-1 absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-out animate-slide-down">
+            <div className="p-2 flex flex-col space-y-1">
               {statusOptions.map((option) => (
                 <button
                   key={option.value}
