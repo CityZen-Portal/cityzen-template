@@ -1,4 +1,4 @@
-export const newsItems = [
+export const newsData = [
     {
         id: 1,
         title: 'Road Closure on Main Street',
