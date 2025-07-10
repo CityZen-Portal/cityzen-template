@@ -1,4 +1,10 @@
 import React from 'react'
+<<<<<<< HEAD
+import Help_Desk_Home from './pages/Help_Desk_Home'
+
+const HelpDesk = () => {
+  return (<Help_Desk_Home />)
+=======
 import HelpDeskHome from './pages/HelpDeskHome'
 import ComplaintForm from './pages/ComplaintForm'
 import ComplaintLog from './pages/ComplaintLog'
@@ -23,6 +29,7 @@ const HelpDesk = () => {
             : <Feedback changePage={changePage} />}
   </>
 )
+>>>>>>> upstream/dev
 }
 
 export default HelpDesk

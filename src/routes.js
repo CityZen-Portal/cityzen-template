@@ -6,6 +6,7 @@ import Service from "views/citizen/services";
 import HelpDesk from "views/citizen/help-desk";
 import ComplaintForm from "views/citizen/help-desk/pages/ComplaintForm";
 import ComplaintLog from "views/citizen/help-desk/pages/ComplaintLog";
+import HelpDesk from "views/citizen/help-desk";
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -34,7 +35,7 @@ import ViewNews from "views/staff/news/components/ViewNews";
 import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 
 // Auth Views
-import SignIn from "views/auth/SignIn";
+import SignUp from "views/auth/Signup/get-started";
 
 // Icons
 
@@ -201,10 +202,12 @@ const routes = [
   
 
   // Auth Routes
+  
+
   {
-    name: "Sign In",
+    name: "Sign Up",
     layout: "/auth",
-    path: "sign-in",
+    path: "sign-up",
     icon: <MdLock className="h-6 w-6" />,
     component: <SignIn />,
   },

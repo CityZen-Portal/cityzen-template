@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
+function ComplaintForm() {
+=======
 function ComplaintForm({changePage}) {
+>>>>>>> upstream/dev
   const [location, setLocation] = useState('');
   const [address, setAddress] = useState('');
   const [wardNumber, setWardNumber] = useState('');
@@ -27,11 +31,22 @@ function ComplaintForm({changePage}) {
       return alert('Please describe the issue under "Other"');
     }
     if (!description.trim()) return alert('Please enter a description');
+<<<<<<< HEAD
+    if(!imageFile){
+      return alert('Please upload the pdf');
+    }
+    if (imageFile && imageFile.type !== 'application/pdf') {
+       return alert('Only PDF files are allowed.');
+    }
+
+
+=======
     if (!imageFile) return alert('Please upload the PDF');
     if (imageFile && imageFile.type !== 'application/pdf') {
       return alert('Only PDF files are allowed.');
     }
 
+>>>>>>> upstream/dev
     console.log('Submitting complaint:', {
       location,
       address,
@@ -43,6 +58,10 @@ function ComplaintForm({changePage}) {
       description,
       imageFile,
     });
+<<<<<<< HEAD
+
+=======
+>>>>>>> upstream/dev
     setLocation('');
     setAddress('');
     setWardNumber('');
@@ -57,6 +76,9 @@ function ComplaintForm({changePage}) {
   };
 
   return (
+<<<<<<< HEAD
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
+=======
     <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
       <div className="absolute top-6 left-6">
         <button
@@ -67,6 +89,7 @@ function ComplaintForm({changePage}) {
         </button>
       </div>
 
+>>>>>>> upstream/dev
       <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint Form</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -115,8 +138,11 @@ function ComplaintForm({changePage}) {
           <h2 className="font-bold text-center pt-4">Complaint Details</h2>
 
           <div>
+<<<<<<< HEAD
+=======
             <label htmlFor="">Complaint ID</label>
             <p>{'0001'}</p>
+>>>>>>> upstream/dev
             <label className="block font-bold">Complaint Type</label>
             <select
               value={complaintType}
@@ -155,7 +181,11 @@ function ComplaintForm({changePage}) {
           )}
 
           <div>
+<<<<<<< HEAD
+            <label className="block font-bold">Title</label>
+=======
             <label className="block font-bold">Issue</label>
+>>>>>>> upstream/dev
             <input
               type="text"
               value={title}
@@ -175,7 +205,11 @@ function ComplaintForm({changePage}) {
           </div>
 
           <div>
+<<<<<<< HEAD
+            <label className="block font-bold mb-1">Upload Pdf</label>
+=======
             <label className="block font-bold mb-1">Upload PDF</label>
+>>>>>>> upstream/dev
             <input
               type="file"
               accept="application/pdf"
@@ -201,4 +235,8 @@ function ComplaintForm({changePage}) {
   );
 }
 
+<<<<<<< HEAD
 export default ComplaintForm;
+=======
+export default ComplaintForm;
+>>>>>>> upstream/dev
