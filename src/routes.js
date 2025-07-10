@@ -14,15 +14,24 @@ import AdminServices from "views/admin/services/index.jsx";
 import ManageStaffs from "views/admin/services/component/ManageStaffs";
 import ViewTasks from "views/admin/services/component/ViewTasks";
 import ViewSchedule from "views/admin/services/component/ViewSchedule";
+
+import FeedbackManage from "views/admin/services/component/FeedbackManage";
+
 import ComplaintManagement from "views/admin/complaints";
+
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
 
 import ManageServices from "views/admin/services/component/ManageServices";
-
+import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
 
 import ComplaintTracker from 'views/staff/help-desk/pages/ComplaintTracker'
+
+import AddNews from "views/staff/news/components/AddNews";
+import ViewNews from "views/staff/news/components/ViewNews";
+
+import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 
 // Auth Views
 import SignIn from "views/auth/SignIn";
@@ -89,7 +98,7 @@ const routes = [
     component: <AdminDashboard />,
   },
 
-    {
+  {
     name: "Admin Services",
     layout: "/admin",
     path: "services",
@@ -120,6 +129,12 @@ const routes = [
         layout: "/admin",
         path: "services/schedule",
         component: <ViewSchedule />
+      },
+      {
+        name: "Feedback Management",
+        layout: "/admin",
+        path: "services/feedback",
+        component: <FeedbackManage />
       }
     ]
   },
@@ -154,7 +169,37 @@ const routes = [
     icon: <MdAdminPanelSettings className="h-6 w-6" />,
     component: <ComplaintTracker />,
   },
+  {
+    name: "City News & Alerts",
+    layout: "/staff",
+    path: "news",
+    icon: <MdChatBubble className="h-6 w-6" />,
+    component: <CityNews/>,
+    children: [
+      {
+        name: "Manage News",
+        layout: "/staff",
+        path: "news/add",
+        component: <AddNews/>
+      },
+      {
+        name: "Edit News ",
+        layout: "/staff",
+        path: "news/add/:id",
+        component: <AddNews/>
+      }
+    ]
+  }
+  ,
+ {
+    name: "News Update",
+    layout: "/citizen",
+    path: "newsupdate",
+    icon: <MdLock className="h-6 w-6" />,
+    component: <NewsUpdate/>,
+  },
   
+
   // Auth Routes
   {
     name: "Sign In",
