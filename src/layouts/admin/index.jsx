@@ -47,6 +47,22 @@ export default function Admin(props) {
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
+        // Handle nested routes if they exist
+        if (prop.children) {
+          return (
+            <React.Fragment key={key}>
+              <Route path={`/${prop.path}`} element={prop.component} />
+              {prop.children.map((childRoute, childKey) => (
+                <Route 
+                  path={`/${childRoute.path}`} 
+                  element={childRoute.component} 
+                  key={`${key}-${childKey}`} 
+                />
+              ))}
+            </React.Fragment>
+          );
+        }
+        // Regular route without children
         return (
           <Route path={`/${prop.path}`} element={prop.component} key={key} />
         );

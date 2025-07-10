@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ServiceManagement from './component/ServiceManagement';
 import StaffManagement from './component/StaffManagement';
 import FeedbackAnalytics from './component/FeedbackAnalytics';
-import ManageServices from './component/ManageServices';
 
 const AdminServices = () => {
-  const [view, setView] = useState('main');
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Check if we're on the main services page
+  const isMainView = location.pathname === '/admin/services';
 
   return (
-    <div className="p-6 space-y-8 min-h-screen bg-gray-50 text-gray-900">
-      {view === 'main' ? (
+    <div className="p-6 space-y-8 min-h-screen bg-gray-50 text-gray-900 dark:bg-navy-700">
+      {isMainView && (
         <>
-          <ServiceManagement onManageClick={() => setView('manage')} />
-          <StaffManagement />
+          <ServiceManagement onManageClick={() => navigate('/admin/services/manage')} />
+          <StaffManagement
+            onAddStaffs={() => navigate('/admin/services/staff')}
+            onViewTasks={() => navigate('/admin/services/tasks')}
+            onViewSchedule={() => navigate('/admin/services/schedule')}
+          />
           <FeedbackAnalytics />
         </>
-      ) : (
-        <ManageServices goBack={() => setView('main')} />
       )}
     </div>
   );
