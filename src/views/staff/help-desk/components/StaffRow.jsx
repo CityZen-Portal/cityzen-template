@@ -3,7 +3,7 @@ import { FaEye } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
 
 const StaffRow = ({ complaint, setComplaints }) => {
-  const { id, citizen, subject, department, dateLogged, location, status, notes, resolution } = complaint;
+  const { id, citizen, issue, department, dateLogged, location, status, notes, resolution } = complaint;
   const [isEditing, setIsEditing] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(status);
 
@@ -67,7 +67,7 @@ const StaffRow = ({ complaint, setComplaints }) => {
         {citizen}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-        {subject}
+        {issue}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
         {department}
@@ -94,8 +94,8 @@ const StaffRow = ({ complaint, setComplaints }) => {
         
         {/* Slide-in Status Dropdown */}
         {isEditing && (
-          <div className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-out animate-slide-down">
-            <div className="p-2 space-y-1">
+          <div className="z-1 absolute top-full left-0 mt-1 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg z-50 transform transition-all duration-300 ease-out animate-slide-down">
+            <div className="p-2 flex flex-col space-y-1">
               {statusOptions.map((option) => (
                 <button
                   key={option.value}

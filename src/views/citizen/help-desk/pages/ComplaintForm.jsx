@@ -106,8 +106,6 @@ function ComplaintForm() {
           <h2 className="font-bold text-center pt-4">Complaint Details</h2>
 
           <div>
-            <label htmlFor="">Complaint ID</label>
-            <p>{'0001'}</p>
             <label className="block font-bold">Complaint Type</label>
             <select
               value={complaintType}
