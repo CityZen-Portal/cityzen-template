@@ -1,6 +1,7 @@
 import React from "react";
 import img1 from "../../../../assets/img/service/govimg-2.jpeg";
 import data from "../variables/data"; 
+import ServiceForm from "./ServiceForm";
 
 function Servicelist() {
   return (
@@ -43,7 +44,9 @@ function Servicelist() {
             </div>
           </div>
         ))}
+
       </div>
+      <ServiceForm/>
     </>
   );
 }
