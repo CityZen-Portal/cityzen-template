@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 const staffList = [
   { id: 1, name: 'Alice Johnson' },
   { id: 2, name: 'Bob Smith' },
@@ -23,7 +24,7 @@ export default function AssignStaff({ complaint, changePage }) {
     <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
       <div className="absolute top-6 left-6">
         <button
-          onClick={() => changePage('/services')}
+          onClick={() => changePage('')}
           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 shadow-md"
         >
           ← Back

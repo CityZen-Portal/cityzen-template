@@ -22,6 +22,8 @@ import ManageServices from "views/admin/services/component/ManageServices";
 
 import StaffService from "views/staff/services";
 
+import ComplaintTracker from 'views/staff/help-desk/pages/ComplaintTracker'
+
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -144,6 +146,13 @@ const routes = [
     path: "services",
     icon: <MdTableView className="h-6 w-6" />,
     component: <StaffService />,
+  },
+  {
+    name: "Complaint Management",
+    layout: "/staff",
+    path: "complaints",
+    icon: <MdAdminPanelSettings className="h-6 w-6" />,
+    component: <ComplaintTracker />,
   },
   
   // Auth Routes

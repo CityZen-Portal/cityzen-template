@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ComplaintTable from '../../components/ComplaintTable.jsx';
 import './ComplaintLog.css'
 
-const ComplaintLog = () => {
+const ComplaintLog = ({changePage}) => {
   const [complaints] = useState([
     {
       id: '0001',
@@ -133,7 +133,7 @@ const ComplaintLog = () => {
         <p className="text-gray-600 dark:text-gray-300">View your submitted complaints and their status</p>
       </div> */}
 
-      <ComplaintTable complaints={complaints} />
+      <ComplaintTable complaints={complaints} changePage={changePage} />
     </div>
   );
 };
