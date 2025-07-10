@@ -12,6 +12,7 @@ import AdminServices from "views/admin/services/index.jsx";
 import ManageStaffs from "views/admin/services/component/ManageStaffs";
 import ViewTasks from "views/admin/services/component/ViewTasks";
 import ViewSchedule from "views/admin/services/component/ViewSchedule";
+import FeedbackManage from "views/admin/services/component/FeedbackManage";
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
 
@@ -99,6 +100,12 @@ const routes = [
         layout: "/admin",
         path: "services/schedule",
         component: <ViewSchedule />
+      },
+      {
+        name: "Feedback Management",
+        layout: "/admin",
+        path: "services/feedback",
+        component: <FeedbackManage />
       }
     ]
   },
