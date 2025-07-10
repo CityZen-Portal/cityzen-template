@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MdOutlineModeComment  } from 'react-icons/md';
 
 const staffList = [
   { id: 1, name: 'Alice Johnson' },
@@ -6,35 +7,17 @@ const staffList = [
   { id: 3, name: 'Charlie Lee' },
 ];
 
-const deptList = [
-  { id: 1, name: 'Sanitation' },
-  { id: 2, name: 'Water Supply' },
-  { id: 3, name: 'Electricity' },
-  { id: 4, name: 'Roads & Infrastructure' },
-  { id: 5, name: 'Sewerage' },
-  { id: 6, name: 'Urban Planning' },
-  { id: 7, name: 'Parks & Horticulture' },
-  { id: 8, name: 'Pollution Control' },
-  { id: 9, name: 'Transport' },
-  { id: 10, name: 'Public Health' },
-];
-
-const AssignStaff = ({ complaint }) => {
+const ViewComplaint = ({ complaint }) => {
   const [assignedStaff, setAssignedStaff] = useState(complaint?.assignedStaff || '');
-  const [assignedDept, setAssignedDept] = useState(complaint?.departmentId || '');
 
   const handleAssign = (e) => {
     setAssignedStaff(e.target.value);
   };
 
-  const handleAssignDept = (e) => {
-    setAssignedDept(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!assignedStaff) return alert('Please select a staff member to assign.');
-    console.log(`Assigned staff ID: ${assignedStaff} for complaint ID: ${complaint?.id}`);
+    console.log(`Assigned staff ID: ${assignedStaff} for complaint ID: ${complaint.id}`);
     alert('Staff assigned successfully!');
   };
 
@@ -162,16 +145,27 @@ const AssignStaff = ({ complaint }) => {
 
           
           <div>
+            <label className="block font-bold">Status</label>
+            <input
+              type="text"
+              value={complaint?.status}
+              disabled
+              className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
+            />
+          </div>
+          
+          <div>
             <label className="block font-bold">Department</label>
             <select
-              value={assignedDept}
-              onChange={handleAssignDept}
+              value={assignedStaff}
+              onChange={handleAssign}
               className="w-full border px-4 py-2 rounded-md bg-white text-gray-800"
+              disabled
             >
-              <option value="">-- Select department --</option>
-              {deptList.map((dept) => (
-                <option key={dept.id} value={dept.id}>
-                  {dept.name}
+              <option value="">None</option>
+              {staffList.map((staff) => (
+                <option key={staff.id} value={staff.id}>
+                  {staff.name}
                 </option>
               ))}
             </select>
@@ -183,8 +177,9 @@ const AssignStaff = ({ complaint }) => {
               value={assignedStaff}
               onChange={handleAssign}
               className="w-full border px-4 py-2 rounded-md bg-white text-gray-800"
+              disabled
             >
-              <option value="">-- Select Staff --</option>
+              <option value="">None</option>
               {staffList.map((staff) => (
                 <option key={staff.id} value={staff.id}>
                   {staff.name}
@@ -192,14 +187,19 @@ const AssignStaff = ({ complaint }) => {
               ))}
             </select>
           </div>
-          
-          <div className="text-center">
-            <button
-              type="submit"
-              className="bg-blue-600 text-white font-bold px-6 py-2 rounded-md hover:bg-blue-700"
+
+          <div className="w-full flex items-center justify-center gap-x-1 mt-3 px-3 py-1">
+            <MdOutlineModeComment className='text-base' />
+            <p className='block font-bold'>Notes</p>
+          </div>
+
+          <div>
+            <textarea
+              rows="3"
+              value={'My Notes'}
+              className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
             >
-              Assign 
-            </button>
+            </textarea>
           </div>
         </form>
       </div>
@@ -207,4 +207,4 @@ const AssignStaff = ({ complaint }) => {
   );
 }
 
-export default AssignStaff
+export default ViewComplaint;

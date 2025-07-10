@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
 import PageNavigator from './PageNavigator';
 import Rows from './Rows';
-import '../pages/ComplaintLog/ComplaintLog.css'
 
-const ComplaintTable = ({ complaints, changePage }) => {
+const ComplaintTable = ({ complaints }) => {
   const [statusFilter, setStatusFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const getStatusColor = (status) => {
-    switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'in-progress': return 'bg-blue-100 text-blue-800';
-      case 'completed': return 'bg-green-100 text-green-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+  switch (status) {
+    case 'pending':
+      return 'bg-yellow-100 text-yellow-800';
+    case 'under-review':
+      return 'bg-amber-100 text-amber-800';
+    case 'assigned':
+      return 'bg-blue-100 text-blue-800';
+    case 'in-progress':
+      return 'bg-indigo-100 text-indigo-800';
+    case 'on-hold':
+      return 'bg-gray-200 text-gray-700';
+    case 'resolved':
+      return 'bg-green-100 text-green-800';
+    case 'closed':
+      return 'bg-green-100 text-green-800';
+    case 'rejected':
+      return 'bg-red-100 text-red-800';
+    case 'completed':
+      return 'bg-green-100 text-green-800';
+    default:
+      return 'bg-gray-100 text-gray-800';
+  }
+};
+
 
   const getStatusText = (status) => {
     switch (status) {
       case 'pending': return 'Pending';
+      case 'under-review': return 'Under Review';
+      case 'assigned': return 'Assigned';
       case 'in-progress': return 'In Progress';
-      case 'completed': return 'Completed';
+      case 'on-hold': return 'On Hold';
+      case 'resolved': return 'Resolved';
+      case 'closed': return 'Closed';
+      case 'rejected': return 'Rejected';
       default: return status.charAt(0).toUpperCase() + status.slice(1);
     }
   };
@@ -99,7 +120,7 @@ const ComplaintTable = ({ complaints, changePage }) => {
         <table className="w-full">
           <thead className="bg-gray-100 dark:bg-gray-700">
             <tr>
-              {['Complaint ID', 'Subject', 'Department', 'Location', 'Date Logged', 'Status', 'Actions'].map((heading, idx) => (
+              {['Complaint ID', 'Issue', 'Department', 'Location', 'Date Logged', 'Status', 'Actions'].map((heading, idx) => (
                 <th key={idx} className="px-6 py-4 text-left text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0">
                   {heading}
                 </th>
@@ -108,10 +129,9 @@ const ComplaintTable = ({ complaints, changePage }) => {
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
             <Rows 
-              paginatedComplaints={paginatedComplaints}
+              complaints={paginatedComplaints}
               getStatusColor={getStatusColor}
               getStatusText={getStatusText}
-              changePage={changePage}
             />
             {paginatedComplaints.length === 0 && (
               <tr>
