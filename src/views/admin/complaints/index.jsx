@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ComplaintTable from './components/ComplaintTable.jsx';
 
-const ComplaintManagement = () => {
+const ComplaintManagement = ({changePage}) => {
   const [complaints] = useState([
     {
       id: '0001',

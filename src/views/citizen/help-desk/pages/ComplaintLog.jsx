@@ -31,14 +31,6 @@ const ComplaintLog = ({changePage}) => {
 
   return (
     <div className="relative flex justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-      <div className="absolute top-6 left-6">
-        <button
-          onClick={() => changePage("Home")}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 shadow-md"
-        >
-        Back
-        </button>
-      </div>
       <div>
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h1>

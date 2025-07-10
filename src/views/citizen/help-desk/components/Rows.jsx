@@ -1,6 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MdVisibility } from 'react-icons/md';
+import Button from 'views/admin/complaints/components/Button';
 
-const Rows = ({ complaint, changePage, getStatusColor, getStatusText }) => {
+const Rows = ({ complaint, getStatusColor, getStatusText, link }) => {
+  const navigate = useNavigate()
   return (
     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
       <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{complaint.id}</td>
@@ -13,8 +17,12 @@ const Rows = ({ complaint, changePage, getStatusColor, getStatusText }) => {
         </span>
       </td>
       <td className="px-6 py-4">
+        <Button Icon={MdVisibility} text={'View'} key={`view-${complaint.id}`} link={`/citizen/help-desk/complaint/view/${complaint.id}`} />
+      </td>
+
+      <td className="px-6 py-4">
         <button
-          onClick={() => changePage("Feedback")}
+          onClick={() => navigate(link)}
           disabled={complaint.status !== 'completed'}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             complaint.status === 'completed'
