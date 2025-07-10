@@ -34,7 +34,7 @@ import ViewNews from "views/staff/news/components/ViewNews";
 import NewsUpdate from "views/citizen/news/components/NewsUpdate"
 
 // Auth Views
-import SignIn from "views/auth/SignIn";
+import RoleSelection from "views/auth/RoleSelection";
 
 // Icons
 
@@ -206,7 +206,7 @@ const routes = [
     layout: "/auth",
     path: "sign-in",
     icon: <MdLock className="h-6 w-6" />,
-    component: <SignIn />,
+    component: <RoleSelection/>,
   },
 ];
 
