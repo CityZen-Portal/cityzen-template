@@ -3,7 +3,7 @@ import { FaEye } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
 
 const StaffRow = ({ complaint, setComplaints }) => {
-  const { id, citizen, subject, department, dateLogged, location, status, notes, resolution } = complaint;
+  const { id, citizen, issue, department, dateLogged, location, status, notes, resolution } = complaint;
   const [isEditing, setIsEditing] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(status);
 
@@ -67,7 +67,7 @@ const StaffRow = ({ complaint, setComplaints }) => {
         {citizen}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-        {subject}
+        {issue}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
         {department}

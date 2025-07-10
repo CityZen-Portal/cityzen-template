@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ComplaintTable from './components/ComplaintTable.jsx';
 
-const ComplaintManagement = ({changePage}) => {
+const ComplaintManagement = () => {
   const [complaints] = useState([
     {
       id: '0001',
@@ -49,7 +49,7 @@ const ComplaintManagement = ({changePage}) => {
       department: 'Sanitation',
       location: 'Anna Nagar',
       dateLogged: '21/04/2025',
-      status: 'closed'
+      status: 'resolved'
     },
     {
       id: '0007',

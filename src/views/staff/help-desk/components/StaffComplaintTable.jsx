@@ -12,7 +12,7 @@ const StaffComplaintTable = ({ complaints, setComplaints, filterStatus }) => {
     const matchesStatus = filterStatus ? complaint.status === filterStatus : true;
     const matchesSearch = searchTerm ? 
       complaint.citizen?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      complaint.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      complaint.issue?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       complaint.id.toString().includes(searchTerm) : true;
     return matchesStatus && matchesSearch;
   });
@@ -164,7 +164,7 @@ const StaffComplaintTable = ({ complaints, setComplaints, filterStatus }) => {
                 Citizen
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Subject
+                Issue
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 Department
