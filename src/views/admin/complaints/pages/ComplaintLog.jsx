@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ComplaintTable from '../../components/ComplaintTable.jsx';
-import './ComplaintLog.css'
+import ComplaintTable from '../components/ComplaintTable.jsx';
 
 const ComplaintLog = ({changePage}) => {
   const [complaints] = useState([
@@ -114,7 +113,7 @@ const ComplaintLog = ({changePage}) => {
       department: 'Electricity',
       location: 'T.Nagar',
       dateLogged: '20/04/2025',
-      status: 'in-hold'
+      status: 'on-hold'
     },
     {
       id: '00015',
@@ -128,10 +127,9 @@ const ComplaintLog = ({changePage}) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-      {/* <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h1>
-        <p className="text-gray-600 dark:text-gray-300">View your submitted complaints and their status</p>
-      </div> */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h2>
+      </div>
 
       <ComplaintTable complaints={complaints} changePage={changePage} />
     </div>

@@ -18,6 +18,8 @@ import ViewSchedule from "views/admin/services/component/ViewSchedule";
 import FeedbackManage from "views/admin/services/component/FeedbackManage";
 
 import ComplaintManagement from "views/admin/complaints";
+import AssignStaff from "views/admin/complaints/pages/AssignStaff";
+import ViewComplaint from "views/admin/complaints/pages/ViewComplaint";
 
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
@@ -141,9 +143,23 @@ const routes = [
   {
     name: "Complaint Management",
     layout: "/admin",
-    path: "complaint-management",
+    path: "complaints",
     icon: <MdAssignment className="h-6 w-6" />,
     component: <ComplaintManagement />,
+    children: [
+      {
+        name: "View Complaint",
+        layout: "/admin",
+        path: "complaints/view/:id",
+        component: <ViewComplaint />
+      },
+      {
+        name: "Edit Staff Assignment",
+        layout: "/admin",
+        path: "complaints/update/:id",
+        component: <AssignStaff />
+      },
+    ]
   },
 
   // Staff Routes
