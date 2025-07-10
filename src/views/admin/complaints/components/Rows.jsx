@@ -3,7 +3,7 @@ import { MdVisibility, MdEdit } from "react-icons/md";
 import Button from './Button';
 import '../pages/ComplaintLog/ComplaintLog.css'
 
-const Rows = ({ paginatedComplaints, getStatusColor, getStatusText }) => {
+const Rows = ({ paginatedComplaints, getStatusColor, getStatusText, changePage }) => {
   return (
     <>
       {paginatedComplaints.map((complaint) => (
@@ -20,7 +20,7 @@ const Rows = ({ paginatedComplaints, getStatusColor, getStatusText }) => {
           </td>
           <td className="flex px-3 py-4 gap-2 max-w-min">
             <Button Icon={MdVisibility} text={'View'} />
-            <Button Icon={MdEdit} text={'Edit'} />
+            <Button Icon={MdEdit} text={'Edit'} onclick={() => changePage("Assign Staff")} />
           </td>
         </tr>
       ))}

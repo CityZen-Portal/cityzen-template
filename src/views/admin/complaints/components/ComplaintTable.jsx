@@ -3,7 +3,7 @@ import PageNavigator from './PageNavigator';
 import Rows from './Rows';
 import '../pages/ComplaintLog/ComplaintLog.css'
 
-const ComplaintTable = ({ complaints }) => {
+const ComplaintTable = ({ complaints, changePage }) => {
   const [statusFilter, setStatusFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -111,6 +111,7 @@ const ComplaintTable = ({ complaints }) => {
               paginatedComplaints={paginatedComplaints}
               getStatusColor={getStatusColor}
               getStatusText={getStatusText}
+              changePage={changePage}
             />
             {paginatedComplaints.length === 0 && (
               <tr>

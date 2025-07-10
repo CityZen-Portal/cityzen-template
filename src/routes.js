@@ -26,10 +26,13 @@ import ManageServices from "views/admin/services/component/ManageServices";
 import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
 
+import ComplaintTracker from 'views/staff/help-desk/pages/ComplaintTracker'
+
 import AddNews from "views/staff/news/components/AddNews";
 import ViewNews from "views/staff/news/components/ViewNews";
 
 import NewsUpdate from "views/citizen/news/components/NewsUpdate"
+
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -160,7 +163,13 @@ const routes = [
     component: <StaffService />,
   },
   {
-
+    name: "Complaint Management",
+    layout: "/staff",
+    path: "complaints",
+    icon: <MdAdminPanelSettings className="h-6 w-6" />,
+    component: <ComplaintTracker />,
+  },
+  {
     name: "City News & Alerts",
     layout: "/staff",
     path: "news",
