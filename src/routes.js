@@ -52,6 +52,7 @@ import {
   MdChatBubble,
   MdLiveHelp,
   MdAssignment,
+  MdBallot,
 } from "react-icons/md";
 
 const routes = [
@@ -195,7 +196,7 @@ const routes = [
     name: "Complaint Management",
     layout: "/staff",
     path: "complaints",
-    icon: <MdAdminPanelSettings className="h-6 w-6" />,
+    icon: <MdBallot className="h-6 w-6" />,
     component: <ComplaintTracker />,
   },
   {

@@ -11,8 +11,8 @@ const Button = ({ Icon, text, link }) => {
         window.scrollTo(0, 0);
       }}
     >
-        <Icon className="text-base" />
-        {text}
+      <Icon className="text-base" />
+      {text}
     </button>
 
   )

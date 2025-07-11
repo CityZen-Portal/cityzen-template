@@ -9,7 +9,10 @@ const HelpCard = ({ title, description, Icon, link }) => {
         extra={`flex flex-col w-full h-full !p-4 3xl:p-![18px] bg-white cursor-pointer`}
       >
         <div className="h-full w-full text-center flex items-center justify-center p-3" 
-          onClick={() => navigate(link)}>
+          onClick={() => {
+            navigate(link)
+            window.scrollTo(0, 0);
+          }}>
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="inline-flex items-center justify-center rounded-full bg-purple-100 shadow-lg shadow-purple-300 p-5">
               <Icon className="text-3xl text-purple-600" />
