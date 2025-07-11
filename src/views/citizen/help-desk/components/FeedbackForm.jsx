@@ -32,10 +32,9 @@ const FeedbackForm = () => {
         className="bg-white dark:bg-navy-700 rounded-2xl shadow-xl p-8 w-full max-w-2xl	"
       >
         <h2 className="text-center font-semibold text-lg mb-6 text-black dark:text-white">
-          FEEDBACK FORM
+          Feedback Form
         </h2>
 
-      {/* Complaint ID */}
         <label className="block mb-1 font-medium text-black dark:text-white">
           Complaint ID
         </label>
@@ -45,11 +44,9 @@ const FeedbackForm = () => {
           placeholder="Enter Complaint ID"
           value={formData.complaintId}
           onChange={handleChange}
-          required
+          disabled
           className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
         />
-
-        {/* Name */}
         <label className="block mb-1 font-medium text-black dark:text-white">
           Name
         </label>
@@ -59,11 +56,10 @@ const FeedbackForm = () => {
           placeholder="Enter Name"
           value={formData.name}
           onChange={handleChange}
-          required
+          disabled
           className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
         />
 
-        {/* Complaint */}
         <label className="block mb-1 font-medium text-black dark:text-white">
           Complaint
         </label>
@@ -73,11 +69,10 @@ const FeedbackForm = () => {
           placeholder="Enter Complaint"
           value={formData.complaint}
           onChange={handleChange}
-          required
+          disabled
           className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
         />
 
-        {/* Was the issue resolved? */}
         <label className="block mb-2 font-medium text-black dark:text-white">
           Was the issue resolved?
         </label>
@@ -96,7 +91,6 @@ const FeedbackForm = () => {
           ))}
         </div>
 
-        {/* Star Rating */}
         <label className="block mb-2 font-medium text-black dark:text-white">
           Rating
         </label>
@@ -114,28 +108,27 @@ const FeedbackForm = () => {
           ))}
         </div>
 
-        {/* Comments */}
+
         <label className="block mb-1 font-medium text-black dark:text-white">
-          Comments/Suggestion
+          Comments
         </label>
         <textarea
           name="comments"
-          placeholder="Enter Comments or Suggestions"
+          placeholder="Enter Comments"
           value={formData.comments}
           onChange={handleChange}
           rows="4"
           className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-6 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
         />
-
-
-        {/* Submit Button */}
+        <div className="justify-center items-center flex">
         <button
           type="submit"
-          className="w-full text-black py-2 px-4 rounded-full font-bold text-lg shadow-md transition-all duration-200
-                     border border-black dark:text-white dark:border-white"
+          className="w-2/6 text-white py-2 px-4 rounded-full font-bold text-lg shadow-md transition-all duration-200
+          dark:text-white bg-blue-700"
         >
-          Submit <span className="animate-pulse">→</span>
+          Submit <span className="animate-pulse"></span>
         </button>
+        </div>
       </form>
     </div>
   );
