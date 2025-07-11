@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaExclamationCircle, FaCamera, FaHistory } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const ComplaintDetails = ({ complaintId = '0001' }) => {
+  const navigate = useNavigate()
   const [showImageModal, setShowImageModal] = useState(false);
 
   const complaintData = {
@@ -158,7 +160,10 @@ const ComplaintDetails = ({ complaintId = '0001' }) => {
         {/* Back Button */}
         <div className="mt-8">
           <button
-            onClick={() => window.history.back()}
+            onClick={() => {
+              navigate('/citizen/help-desk/complaint/log')
+              window.scrollTo(0,0)
+            }}
             className="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors dark:bg-white dark:text-navy-900 dark:hover:bg-gray-200"
           >
             Back to Complaint Log
