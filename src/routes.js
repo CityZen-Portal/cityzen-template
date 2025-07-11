@@ -8,6 +8,7 @@ import ComplaintForm from "views/citizen/help-desk/pages/ComplaintForm";
 import ComplaintLog from "views/citizen/help-desk/pages/ComplaintLog";
 import ComplaintFeedback from "views/citizen/help-desk/pages/ComplaintFeedback";
 import ComplaintDetails from "views/citizen/help-desk/pages/ComplaintDetails";
+
 // Admin Views
 import AdminDashboard from "views/admin/default";
 import AdminTables from "views/admin/tables";
@@ -54,6 +55,7 @@ import {
   MdAssignment,
   MdBallot,
 } from "react-icons/md";
+import ServiceForm from "views/citizen/services/components/ServiceForm";
 
 const routes = [
   // Citizen Routes
@@ -70,6 +72,14 @@ const routes = [
     path: "Services",
     icon: <MdHome className="h-6 w-6" />,
     component: <Service />,
+    children: [
+      {
+        name: "Service List",
+        layout: "/citizen",
+        path: "Services/form/:serviceName",
+        component: <ServiceForm/>
+      }
+    ]
   },
   // Help Desk
   {
