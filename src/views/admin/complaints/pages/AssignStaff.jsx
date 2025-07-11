@@ -29,6 +29,7 @@ const AssignStaff = ({ complaint }) => {
 
   const handleAssignDept = (e) => {
     setAssignedDept(e.target.value);
+    setAssignedStaff('')
   };
 
   const handleSubmit = (e) => {
@@ -39,8 +40,8 @@ const AssignStaff = ({ complaint }) => {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
-      <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10 w-full">
+      <div className="bg-gray-50 dark:bg-gray-900 max-w-2xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <h2 className="font-bold text-center">Location & Address</h2>
@@ -50,6 +51,15 @@ const AssignStaff = ({ complaint }) => {
             <input
               type="text"
               value={complaint?.id || '0001'}
+              disabled
+              className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
+            />
+          </div>
+          <div>
+            <label className="block font-bold">Complainant</label>
+            <input
+              type="text"
+              value={complaint?.complainant}
               disabled
               className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
             />
@@ -168,7 +178,7 @@ const AssignStaff = ({ complaint }) => {
               onChange={handleAssignDept}
               className="w-full border px-4 py-2 rounded-md bg-white text-gray-800"
             >
-              <option value="">-- Select department --</option>
+              <option value="" disabled>-- Select department --</option>
               {deptList.map((dept) => (
                 <option key={dept.id} value={dept.id}>
                   {dept.name}
@@ -177,21 +187,24 @@ const AssignStaff = ({ complaint }) => {
             </select>
           </div>
 
-          <div>
-            <label className="block font-bold">Assign Staff</label>
-            <select
-              value={assignedStaff}
-              onChange={handleAssign}
-              className="w-full border px-4 py-2 rounded-md bg-white text-gray-800"
-            >
-              <option value="">-- Select Staff --</option>
-              {staffList.map((staff) => (
-                <option key={staff.id} value={staff.id}>
-                  {staff.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          {
+            assignedDept && 
+            <div>
+              <label className="block font-bold">Assign Staff</label>
+              <select
+                value={assignedStaff}
+                onChange={handleAssign}
+                className="w-full border px-4 py-2 rounded-md bg-white text-gray-800"
+              >
+                <option value="" disabled>-- Select Staff --</option>
+                {staffList.map((staff) => (
+                  <option key={staff.id} value={staff.id}>
+                    {staff.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          }
           
           <div className="text-center">
             <button

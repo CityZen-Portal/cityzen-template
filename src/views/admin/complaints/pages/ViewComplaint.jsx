@@ -9,10 +9,15 @@ const staffList = [
 
 const ViewComplaint = ({ complaint }) => {
   const [assignedStaff, setAssignedStaff] = useState(complaint?.assignedStaff || '');
+  const [notes, setNotes] = useState("My Notes");
 
   const handleAssign = (e) => {
     setAssignedStaff(e.target.value);
   };
+
+  const handleNotes = (e) => {
+    setNotes(e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +28,7 @@ const ViewComplaint = ({ complaint }) => {
 
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
-      <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
+      <div className="bg-gray-50 dark:bg-gray-900 max-w-2xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <h2 className="font-bold text-center">Location & Address</h2>
@@ -33,6 +38,15 @@ const ViewComplaint = ({ complaint }) => {
             <input
               type="text"
               value={complaint?.id || '0001'}
+              disabled
+              className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
+            />
+          </div>
+          <div>
+            <label className="block font-bold">Complainant</label>
+            <input
+              type="text"
+              value={complaint?.complainant}
               disabled
               className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
             />
@@ -196,7 +210,8 @@ const ViewComplaint = ({ complaint }) => {
           <div>
             <textarea
               rows="3"
-              value={'My Notes'}
+              value={notes}
+              onChange={handleNotes}
               className="w-full border px-4 py-2 rounded-md bg-gray-200 text-gray-800"
             >
             </textarea>

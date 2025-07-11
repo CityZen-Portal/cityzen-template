@@ -58,7 +58,7 @@ function ComplaintForm() {
 
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
-      <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
+      <div className="bg-gray-50 dark:bg-gray-900 max-w-2xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint Form</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <h2 className="font-bold text-center">Location & Address</h2>

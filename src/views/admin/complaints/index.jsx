@@ -5,122 +5,137 @@ const ComplaintManagement = () => {
   const [complaints] = useState([
     {
       id: '0001',
-      subject: 'Water Leakage',
+      complainant: 'John Doe',
+      issue: 'Water Leakage',
       department: 'Water Resource',
       location: 'Anna Nagar',
-      dateLogged: '19/04/2025',
+      dateLogged: '2025-04-19',
       status: 'pending'
     },
     {
       id: '0002',
-      subject: 'Street Light Issue',
+      complainant: 'Albert Smith',
+      issue: 'Street Light Issue',
       department: 'Electricity',
       location: 'T.Nagar',
-      dateLogged: '20/04/2025',
+      dateLogged: '2025-04-20',
       status: 'in-progress'
     },
     {
       id: '0003',
-      subject: 'Garbage Collection',
+      complainant: 'Bench Markov',
+      issue: 'Garbage Collection',
       department: 'Sanitation',
       location: 'Anna Nagar',
-      dateLogged: '21/04/2025',
+      dateLogged: '2025-04-21',
       status: 'resolved'
     },
     {
       id: '0004',
-      subject: 'Water Leakage',
+      complainant: 'Jane Smith',
+      issue: 'Water Leakage',
       department: 'Water Resource',
       location: 'Anna Nagar',
-      dateLogged: '19/04/2025',
+      dateLogged: '2025-04-19',
       status: 'on-hold'
     },
     {
       id: '0005',
-      subject: 'Street Light Issue',
+      complainant: 'Jane Smith',
+      issue: 'Street Light Issue',
       department: 'Electricity',
       location: 'T.Nagar',
-      dateLogged: '20/04/2025',
+      dateLogged: '2025-04-20',
       status: 'in-progress'
     },
     {
       id: '0006',
-      subject: 'Garbage Collection',
+      complainant: 'Jane Smith',
+      issue: 'Garbage Collection',
       department: 'Sanitation',
       location: 'Anna Nagar',
-      dateLogged: '21/04/2025',
+      dateLogged: '2025-04-21',
       status: 'resolved'
     },
     {
       id: '0007',
-      subject: 'Water Leakage',
+      complainant: 'Jane Smith',
+      issue: 'Water Leakage',
       department: 'Water Resource',
       location: 'Anna Nagar',
-      dateLogged: '19/04/2025',
+      dateLogged: '2025-01-23',
       status: 'pending'
     },
     {
       id: '0008',
-      subject: 'Street Light Issue',
+      complainant: 'Jane Smith',
+      issue: 'Street Light Issue',
       department: 'Electricity',
       location: 'T.Nagar',
-      dateLogged: '20/04/2025',
+      dateLogged: '2025-01-20',
       status: 'in-progress'
     },
     {
       id: '0009',
-      subject: 'Garbage Collection',
+      complainant: 'Jane Smith',
+      issue: 'Garbage Collection',
       department: 'Sanitation',
       location: 'Anna Nagar',
-      dateLogged: '21/04/2025',
-      status: 'closed'
+      dateLogged: '2025-01-21',
+      status: 'resolved'
     },
     {
       id: '0010',
-      subject: 'Water Leakage',
+      complainant: 'Jane Smith',
+      issue: 'Water Leakage',
       department: 'Water Resource',
       location: 'Anna Nagar',
-      dateLogged: '19/04/2025',
+      dateLogged: '2025-03-19',
       status: 'under-review'
     },
     {
       id: '00011',
-      subject: 'Street Light Issue',
+      complainant: 'Jane Smith',
+      issue: 'Street Light Issue',
       department: 'Electricity',
       location: 'T.Nagar',
-      dateLogged: '20/04/2025',
+      dateLogged: '2025-04-01',
       status: 'in-progress'
     },
     {
       id: '00012',
-      subject: 'Garbage Collection',
+      complainant: 'Jane Smith',
+      issue: 'Garbage Collection',
       department: 'Sanitation',
       location: 'Anna Nagar',
-      dateLogged: '21/04/2025',
+      dateLogged: '2025-04-24',
       status: 'assigned'
     },
     {
       id: '00013',
-      subject: 'Water Leakage',
+      complainant: 'Jane Smith',
+      issue: 'Water Leakage',
       department: 'Water Resource',
       location: 'Anna Nagar',
-      dateLogged: '19/04/2025',
+      dateLogged: '2025-04-19',
       status: 'pending'
     },
     {
       id: '00014',
-      subject: 'Street Light Issue',
+      complainant: 'Jane Smith',
+      issue: 'Street Light Issue',
       department: 'Electricity',
       location: 'T.Nagar',
-      dateLogged: '20/04/2025',
+      dateLogged: '2025-04-20',
       status: 'on-hold'
     },
     {
       id: '00015',
-      subject: 'Garbage Collection',
+      complainant: 'Jane Smith',
+      issue: 'Garbage Collection',
       department: 'Sanitation',
       location: 'Anna Nagar',
-      dateLogged: '21/04/2025',
+      dateLogged: '2025-04-21',
       status: 'rejected'
     }
   ]);
