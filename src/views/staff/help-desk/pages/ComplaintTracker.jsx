@@ -12,7 +12,7 @@ const ComplaintTracker = () => {
       {
         id: 'T001',
         citizen: 'John Doe',
-        subject: 'Road Repair',
+        issue: 'Road Repair',
         department: 'Public Works',
         status: 'pending',
         dateLogged: '2025-07-08',
@@ -23,7 +23,7 @@ const ComplaintTracker = () => {
       {
         id: 'T002',
         citizen: 'Jane Smith',
-        subject: 'Waste Collection',
+        issue: 'Waste Collection',
         department: 'Sanitation',
         status: 'in-progress',
         dateLogged: '2025-07-09',
@@ -34,7 +34,7 @@ const ComplaintTracker = () => {
       {
         id: 'T003',
         citizen: 'Robert Johnson',
-        subject: 'Street Light Repair',
+        issue: 'Street Light Repair',
         department: 'Maintenance',
         status: 'resolved',
         dateLogged: '2025-07-07',
@@ -45,7 +45,7 @@ const ComplaintTracker = () => {
       {
         id: 'T004',
         citizen: 'Emily Davis',
-        subject: 'Tree Trimming',
+        issue: 'Tree Trimming',
         department: 'Maintenance',
         status: 'pending',
         dateLogged: '2025-07-06',
@@ -56,7 +56,7 @@ const ComplaintTracker = () => {
       {
         id: 'T005',
         citizen: 'Michael Brown',
-        subject: 'Water Supply',
+        issue: 'Water Supply',
         department: 'Water Works',
         status: 'assigned',
         dateLogged: '2025-07-05',
@@ -67,7 +67,7 @@ const ComplaintTracker = () => {
       {
         id: 'T006',
         citizen: 'Sarah Wilson',
-        subject: 'Drainage',
+        issue: 'Drainage',
         department: 'Public Works',
         status: 'under-review',
         dateLogged: '2025-07-04',
@@ -78,7 +78,7 @@ const ComplaintTracker = () => {
       {
         id: 'T007',
         citizen: 'David Taylor',
-        subject: 'Park Maintenance',
+        issue: 'Park Maintenance',
         department: 'Parks',
         status: 'on-hold',
         dateLogged: '2025-07-03',
@@ -89,7 +89,7 @@ const ComplaintTracker = () => {
       {
         id: 'T008',
         citizen: 'Lisa Anderson',
-        subject: 'Traffic Signal',
+        issue: 'Traffic Signal',
         department: 'Traffic',
         status: 'closed',
         dateLogged: '2025-07-02',
@@ -100,7 +100,7 @@ const ComplaintTracker = () => {
       {
         id: 'T009',
         citizen: 'Tom Wilson',
-        subject: 'Noise Complaint',
+        issue: 'Noise Complaint',
         department: 'Municipal',
         status: 'rejected',
         dateLogged: '2025-07-01',
@@ -111,7 +111,7 @@ const ComplaintTracker = () => {
       {
         id: 'T010',
         citizen: 'Amy Johnson',
-        subject: 'Building Permit',
+        issue: 'Building Permit',
         department: 'Planning',
         status: 'resolved',
         dateLogged: '2025-06-30',
@@ -122,7 +122,7 @@ const ComplaintTracker = () => {
       {
         id: 'T011',
         citizen: 'Mark Davis',
-        subject: 'Street Cleaning',
+        issue: 'Street Cleaning',
         department: 'Sanitation',
         status: 'in-progress',
         dateLogged: '2025-06-29',
@@ -133,7 +133,7 @@ const ComplaintTracker = () => {
       {
         id: 'T012',
         citizen: 'Rachel Green',
-        subject: 'Water Leakage',
+        issue: 'Water Leakage',
         department: 'Water Works',
         status: 'assigned',
         dateLogged: '2025-06-28',
@@ -144,7 +144,7 @@ const ComplaintTracker = () => {
       {
         id: 'T013',
         citizen: 'Jennifer Lee',
-        subject: 'Pothole Repair',
+        issue: 'Pothole Repair',
         department: 'Public Works',
         status: 'under-review',
         dateLogged: '2025-06-27',
@@ -155,7 +155,7 @@ const ComplaintTracker = () => {
       {
         id: 'T014',
         citizen: 'Alex Johnson',
-        subject: 'Garbage Collection',
+        issue: 'Garbage Collection',
         department: 'Sanitation',
         status: 'pending',
         dateLogged: '2025-06-26',
@@ -166,7 +166,7 @@ const ComplaintTracker = () => {
       {
         id: 'T015',
         citizen: 'Maria Garcia',
-        subject: 'Public Toilet',
+        issue: 'Public Toilet',
         department: 'Municipal',
         status: 'on-hold',
         dateLogged: '2025-06-25',
@@ -177,7 +177,7 @@ const ComplaintTracker = () => {
       {
         id: 'T016',
         citizen: 'Chris Brown',
-        subject: 'Street Light',
+        issue: 'Street Light',
         department: 'Maintenance',
         status: 'resolved',
         dateLogged: '2025-06-24',
@@ -224,7 +224,6 @@ const ComplaintTracker = () => {
               <option value="in-progress">In Progress</option>
               <option value="on-hold">On Hold</option>
               <option value="resolved">Resolved</option>
-              <option value="closed">Closed</option>
               <option value="rejected">Rejected</option>
             </select>
           </div>
