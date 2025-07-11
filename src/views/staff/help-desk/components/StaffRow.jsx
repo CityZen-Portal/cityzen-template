@@ -3,8 +3,8 @@ import { FaEye } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom'; // Assuming React Router is used for navigation
 
-const StaffRow = ({ complaint, setComplaints }) => {
-  const { id, citizen, issue, department, dateLogged, location, status, notes, resolution } = complaint;
+const StaffRow = ({ complaint }) => {
+  const { id, citizen, issue, department, dateLogged, location, status } = complaint;
   const navigate = useNavigate();
 
   const getStatusColor = (status) => {
@@ -35,10 +35,6 @@ const StaffRow = ({ complaint, setComplaints }) => {
     return statusMap[status] || status.charAt(0).toUpperCase() + status.slice(1);
   };
 
-  const handleEditClick = () => {
-    navigate(`/update-complaint/${id}`, { state: { complaint } });
-  };
-
   return (
     <tr className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{id}</td>
@@ -53,7 +49,7 @@ const StaffRow = ({ complaint, setComplaints }) => {
             {formatStatus(status)}
           </span>
           <button
-            onClick={handleEditClick}
+            onClick={() => navigate(`/staff/complaints/update-details`)}
             className="px-2 py-1 bg-blue-1000 text-white rounded-md hover:bg-blue-700 text-xs inline-flex items-center transition-colors duration-200"
           >
             <MdEdit className="text-sm" />
@@ -61,7 +57,9 @@ const StaffRow = ({ complaint, setComplaints }) => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-        <button className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm transition-colors duration-200">
+        <button 
+          onClick={() => navigate(`/staff/complaints/view-details`)}
+          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm transition-colors duration-200">
           <FaEye className="mr-1 text-xs" /> View
         </button>
       </td>

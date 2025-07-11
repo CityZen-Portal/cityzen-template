@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StaffComplaintTable from '../components/StaffComplaintTable';
 import { MdTrackChanges } from 'react-icons/md';
 
-const ComplaintTracker1 = () => {
+const ComplaintLog = () => {
   const [complaints, setComplaints] = useState([]);
   const [filterStatus, setFilterStatus] = useState('');
 
@@ -257,4 +257,4 @@ const ComplaintTracker1 = () => {
   );
 };
 
-export default ComplaintTracker1;
+export default ComplaintLog;
