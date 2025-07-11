@@ -16,8 +16,8 @@ const Row = ({ complaint, getStatusColor, getStatusText}) => {
         </span>
         </td>
         <td className="flex px-3 py-4 gap-2 max-w-min">
-        <Button Icon={MdVisibility} text={'View'} key={`view-${complaint.id}`} link={`/admin/complaints/view/${complaint.id}`} />
-        <Button Icon={MdEdit} text={'Update'} key={`update-${complaint.id}`} link={`/admin/complaints/update/${complaint.id}`} />
+        <Button Icon={MdVisibility} text={''} key={`view-${complaint.id}`} link={`/admin/complaints/view/${complaint.id}`} />
+        <Button Icon={MdEdit} text={''} key={`update-${complaint.id}`} link={`/admin/complaints/update/${complaint.id}`} />
         </td>
     </tr>
   )
