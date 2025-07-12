@@ -10,7 +10,7 @@ import ComplaintFeedback from "views/citizen/help-desk/pages/ComplaintFeedback";
 import ComplaintDetails from "views/citizen/help-desk/pages/ComplaintDetails";
 
 // Admin Views
-import AdminDashboard from "views/admin/default";
+import AdminDashboard from "./views/admin/dashboard/index.jsx";
 import AdminTables from "views/admin/tables";
 import AdminProfile from "views/admin/profile";
 import AdminServices from "views/admin/services/index.jsx";
@@ -130,7 +130,6 @@ const routes = [
     path: "services",
     icon: <MdDashboard className="h-6 w-6" />,
     component: <AdminServices />,
-    // Define nested routes for Admin Services
     children: [
       {
         name: "Manage Services",
@@ -202,13 +201,7 @@ const routes = [
     icon: <MdTableView className="h-6 w-6" />,
     component: <StaffService />,
   },
-  // {
-  //   name: "Complaint Management",
-  //   layout: "/staff",
-  //   path: "complaints",
-  //   icon: <MdBallot className="h-6 w-6" />,
-  //   component: <ComplaintTracker />,
-  // },
+
   {
     name: "City News & Alerts",
     layout: "/staff",
