@@ -130,7 +130,6 @@ const routes = [
     path: "services",
     icon: <MdDashboard className="h-6 w-6" />,
     component: <AdminServices />,
-    // Define nested routes for Admin Services
     children: [
       {
         name: "Manage Services",

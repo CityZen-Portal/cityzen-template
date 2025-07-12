@@ -18,6 +18,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "react-calendar/dist/Calendar.css";
+import MiniCalendar from "components/calendar/MiniCalendar";
 
 const cardStyle =
   "bg-white rounded-2xl shadow-md p-4 flex flex-col items-start gap-1";
@@ -40,16 +41,11 @@ const dataLine = [
 export default function AdminDashboard() {
   return (
     <div className="bg-slate-70 flex min-h-screen font-sans">
-      
-
       {/* Main Content */}
       <div
         className="flex-1 p-6"
-        style={{ backgroundColor: "rgb(244 247 254)" }}
+      
       >
-        
-
-
         <div className="mb-6 grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-3">
           <div className={cardStyle}>
             <div className="text-sm text-gray-500">Grievences Raised</div>
@@ -112,41 +108,8 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Line Chart */}
-        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl bg-white p-6 shadow-md">
-            <div className="mb-4 text-xl font-semibold">
-              📈 Monthly Citizen Activity
-            </div>
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={dataLine}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="uv"
-                  stroke="#6C5DD3"
-                  strokeWidth={3}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="pv"
-                  stroke="#00C9FF"
-                  strokeWidth={3}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* Calendar */}
-          <div className="rounded-2xl bg-white p-6 shadow-md">
-            <div className="mb-4 text-xl font-semibold">
-              📅 City Events Calendar
-            </div>
-            <Calendar className="w-full" />
-          </div>
+        <div className="md:w-96">
+          <MiniCalendar />
         </div>
       </div>
     </div>
