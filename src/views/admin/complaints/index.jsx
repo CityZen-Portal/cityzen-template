@@ -141,9 +141,9 @@ const ComplaintManagement = () => {
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h2>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8 rounded-xl">
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h2>
       </div>
 
       <ComplaintTable complaints={complaints} />

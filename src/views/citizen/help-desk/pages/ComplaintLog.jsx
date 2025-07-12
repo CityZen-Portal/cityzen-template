@@ -76,14 +76,16 @@ const ComplaintLog = () => {
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8 rounded-lg sm:rounded-xl">
       <div>
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Complaint Log</h1>
-          <p className="text-gray-600 dark:text-gray-300">View your submitted complaints and their status</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2 text-center sm:text-left">Complaint Log</h1>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 text-center sm:text-left">View your submitted complaints and their status</p>
         </div>
 
-        <ComplaintTable complaints={complaints} />
+        <div className="overflow-x-auto">
+          <ComplaintTable complaints={complaints} />
+        </div>
       </div>
     </div>
   );

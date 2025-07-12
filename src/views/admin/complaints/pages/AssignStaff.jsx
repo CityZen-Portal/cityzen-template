@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaMapMarkerAlt, FaExclamationCircle, FaCamera, FaHistory } from 'react-icons/fa';
-import { useNavigate, useParams } from 'react-router-dom';
+import { FaMapMarkerAlt, FaExclamationCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const staffList = [
   { id: 1, name: 'Alice Johnson' },
@@ -23,7 +23,6 @@ const deptList = [
 
 const AssignStaff = () => {
   const navigate = useNavigate()
-  const complaintId = useParams()
   
   const [showImageModal, setShowImageModal] = useState(false);
 
@@ -83,93 +82,97 @@ const AssignStaff = () => {
     if (!assignedStaff) return alert('Please select a staff member to assign.');
     console.log(`Assigned staff ID: ${assignedStaff} for complaint ID: ${complaint?.id}`);
     alert('Staff assigned successfully!');
+    navigate('/admin/complaints/')
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-navy-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 dark:bg-navy-900 py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center space-x-4">
-            <FaExclamationCircle className="text-3xl text-blue-600" />
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 space-y-4 sm:space-y-0">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <FaExclamationCircle className="text-2xl sm:text-3xl text-blue-600 flex-shrink-0" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                 Complaint #{complaint.id}
               </h1>
               <p className="text-gray-600 dark:text-gray-300 text-sm">Manage your complaint details</p>
             </div>
           </div>
-          <span className={`px-4 py-1 rounded-full text-sm font-medium ${getStatusColor(complaint.status)}`}>
+          <span className={`px-4 py-1 rounded-full text-sm font-medium ${getStatusColor(complaint.status)} self-start sm:self-auto`}>
             {getStatusText(complaint.status)}
           </span>
         </div>
 
         {/* Main Content */}
-        <div className="lg:grid-cols-3 gap-8">
-          <div className="bg-white dark:bg-navy-800 rounded-xl shadow-sm p-6">
-            <div className="grid grid-cols-3 gap-6">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="bg-white dark:bg-navy-800 rounded-xl shadow-sm p-4 sm:p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Location Details */}
-              <div className="lg:col-span-1 space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                  <FaMapMarkerAlt className="mr-2 text-blue-600" /> Location Details
+                  <FaMapMarkerAlt className="mr-2 text-blue-600 flex-shrink-0" /> Location Details
                 </h2>
                 {['complaintant', 'location', 'address', 'wardNumber', 'pincode', 'dateLogged'].map((field) => (
-                  <div key={field}>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
+                  <div key={field} className="break-words">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 capitalize mb-1">
                       {field.replace(/([A-Z])/g, ' $1').trim()}
                     </label>
-                    <p className="mt-1 text-gray-900 dark:text-white">{complaint[field]}</p>
+                    <p className="text-gray-900 dark:text-white text-sm sm:text-base">{complaint[field]}</p>
                   </div>
                 ))}
               </div>
 
               {/* Complaint Details */}
-              <div className="lg:col-span-1 space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                  <FaExclamationCircle className="mr-2 text-blue-600" /> Complaint Title & Details
+                  <FaExclamationCircle className="mr-2 text-blue-600 flex-shrink-0" /> Complaint Title & Details
                 </h2>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Complaint Type</label>
-                  <p className="mt-1 text-gray-900 dark:text-white">{complaint.complaintType}</p>
+                <div className="break-words">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Complaint Type</label>
+                  <p className="text-gray-900 dark:text-white text-sm sm:text-base">{complaint.complaintType}</p>
+                </div>
+                <div className="break-words">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Issue</label>
+                  <p className="text-gray-900 dark:text-white text-sm sm:text-base">{complaint.Issue}</p>
+                </div>
+                <div className="break-words">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+                  <p className="text-gray-900 dark:text-white text-sm sm:text-base">{complaint.description}</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Issue</label>
-                  <p className="mt-1 text-gray-900 dark:text-white">{complaint.Issue}</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                  <p className="mt-1 text-gray-900 dark:text-white">{complaint.description}</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Image</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Image</label>
                   <div className="mt-1">
                     {complaint.imageUrl ? (
                       <img
                         src={complaint.imageUrl}
                         alt="Complaint"
-                        className="max-w-xs rounded-md cursor-pointer hover:opacity-80"
+                        className="max-w-full sm:max-w-xs rounded-md cursor-pointer hover:opacity-80 transition-opacity"
                         onClick={() => setShowImageModal(true)}
                       />
                     ) : (
-                      <p className="text-gray-500 dark:text-gray-400 italic">No image uploaded</p>
+                      <p className="text-gray-500 dark:text-gray-400 italic text-sm">No image uploaded</p>
                     )}
                   </div>
                 </div>
               </div>
 
               {/* Assign Staff */}
-              <div className="lg:col-span-1">
-                <form className="flex flex-col h-full">
+              <div>
+                <form 
+                  className="flex flex-col h-full"
+                  onSubmit={handleSubmit}>
                   
-                  <div className="space-y-6">
-                    <h2 className="text-lg font-semibold mb-4 border-b pb-1 text-gray-800 dark:text-gray-100">Assignment</h2>
+                  <div className="space-y-4 sm:space-y-6">
+                    <h2 className="text-lg font-semibold mb-4 border-b pb-2 text-gray-800 dark:text-gray-100">Assignment</h2>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Select Department</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Department</label>
                       <select
                         value={assignedDept}
                         onChange={handleAssignDept}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                        className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
+                        required
                       >
                         <option value="" disabled>-- Select department --</option>
                         {deptList.map((dept) => (
@@ -180,11 +183,12 @@ const AssignStaff = () => {
 
                     {assignedDept && (
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Assign</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Assign</label>
                         <select
                           value={assignedStaff}
                           onChange={handleAssign}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                          className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
+                          required
                         >
                           <option value="" disabled>-- Select staff --</option>
                           {staffList.map((staff) => (
@@ -195,10 +199,10 @@ const AssignStaff = () => {
                     )}
                   </div>
 
-                  <div className="mt-auto pt-4 text-center">
+                  <div className="mt-6 lg:mt-auto pt-4 text-center">
                     <button
                       type="submit"
-                      className="bg-blue-600 hover:bg-blue-700 transition text-white font-semibold px-6 py-2 rounded-lg"
+                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 transition text-white font-semibold px-6 py-2 rounded-lg text-sm sm:text-base"
                     >
                       Assign Staff
                     </button>
@@ -213,13 +217,13 @@ const AssignStaff = () => {
 
       {/* Image Modal */}
       {showImageModal && complaint.imageUrl && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-navy-800 rounded-xl p-4 max-w-3xl w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-navy-800 rounded-xl p-4 max-w-3xl w-full max-h-[90vh] overflow-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Image Preview</h3>
               <button
                 onClick={() => setShowImageModal(false)}
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+                className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white text-xl p-1"
               >
                 ✕
               </button>

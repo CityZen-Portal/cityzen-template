@@ -26,41 +26,48 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-navy-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 dark:bg-navy-900 flex items-center justify-center p-4 sm:p-6 lg:p-8">
       <form
         onSubmit={handleSubmit}
-        className="bg-white dark:bg-navy-700 rounded-2xl shadow-xl p-8 w-full max-w-2xl	"
+        className="bg-white dark:bg-navy-700 rounded-lg sm:rounded-2xl shadow-lg sm:shadow-xl p-4 sm:p-6 lg:p-8 w-full max-w-xs sm:max-w-md lg:max-w-2xl"
       >
-        <h2 className="text-center font-semibold text-lg mb-6 text-black dark:text-white">
+        <h2 className="text-center font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 text-black dark:text-white">
           Feedback Form
         </h2>
 
-        <label className="block mb-1 font-medium text-black dark:text-white">
-          Complaint ID
-        </label>
-        <input
-          type="text"
-          name="complaintId"
-          placeholder="Enter Complaint ID"
-          value={formData.complaintId}
-          onChange={handleChange}
-          disabled
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
-        />
-        <label className="block mb-1 font-medium text-black dark:text-white">
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Name"
-          value={formData.name}
-          onChange={handleChange}
-          disabled
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+          <div>
+            <label className="block mb-1 sm:mb-2 font-medium text-sm sm:text-base text-black dark:text-white">
+              Complaint ID
+            </label>
+            <input
+              type="text"
+              name="complaintId"
+              placeholder="Enter Complaint ID"
+              value={formData.complaintId}
+              onChange={handleChange}
+              disabled
+              className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 text-sm sm:text-base placeholder-gray-400 dark:placeholder-gray-500"
+            />
+          </div>
 
-        <label className="block mb-1 font-medium text-black dark:text-white">
+          <div>
+            <label className="block mb-1 sm:mb-2 font-medium text-sm sm:text-base text-black dark:text-white">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Name"
+              value={formData.name}
+              onChange={handleChange}
+              disabled
+              className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 text-sm sm:text-base placeholder-gray-400 dark:placeholder-gray-500"
+            />
+          </div>
+        </div>
+
+        <label className="block mb-1 sm:mb-2 font-medium text-sm sm:text-base text-black dark:text-white">
           Complaint
         </label>
         <input
@@ -70,13 +77,13 @@ const FeedbackForm = () => {
           value={formData.complaint}
           onChange={handleChange}
           disabled
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 placeholder-gray-400 dark:placeholder-gray-500"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 sm:mb-6 text-sm sm:text-base placeholder-gray-400 dark:placeholder-gray-500"
         />
 
-        <label className="block mb-2 font-medium text-black dark:text-white">
+        <label className="block mb-2 sm:mb-3 font-medium text-sm sm:text-base text-black dark:text-white">
           Was the issue resolved?
         </label>
-        <div className="flex items-center space-x-6 mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 mb-4 sm:mb-6">
           {["Yes", "No"].map((option) => (
             <label key={option} className="flex items-center space-x-2 cursor-pointer">
               <input
@@ -86,20 +93,20 @@ const FeedbackForm = () => {
                 onChange={handleChange}
                 className="accent-black dark:accent-white h-4 w-4"
               />
-              <span className="text-black dark:text-white text-sm">{option}</span>
+              <span className="text-black dark:text-white text-sm sm:text-base">{option}</span>
             </label>
           ))}
         </div>
 
-        <label className="block mb-2 font-medium text-black dark:text-white">
+        <label className="block mb-2 sm:mb-3 font-medium text-sm sm:text-base text-black dark:text-white">
           Rating
         </label>
-        <div className="flex space-x-10 mb-6 mx-5">
+        <div className="flex justify-center sm:justify-start space-x-2 sm:space-x-4 lg:space-x-6 mb-4 sm:mb-6">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
               key={star}
               onClick={() => handleRating(star)}
-              className={`text-4xl cursor-pointer transition-colors duration-200 ${
+              className={`text-2xl sm:text-3xl lg:text-4xl cursor-pointer transition-colors duration-200 ${
                 formData.rating >= star ? "text-yellow-500" : "text-gray-400"
               }`}
             >
@@ -108,8 +115,7 @@ const FeedbackForm = () => {
           ))}
         </div>
 
-
-        <label className="block mb-1 font-medium text-black dark:text-white">
+        <label className="block mb-1 sm:mb-2 font-medium text-sm sm:text-base text-black dark:text-white">
           Comments
         </label>
         <textarea
@@ -118,16 +124,16 @@ const FeedbackForm = () => {
           value={formData.comments}
           onChange={handleChange}
           rows="4"
-          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-6 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-navy-800 dark:text-white rounded px-3 py-2 mb-4 sm:mb-6 text-sm sm:text-base placeholder-gray-400 dark:placeholder-gray-500 resize-none"
         />
-        <div className="justify-center items-center flex">
-        <button
-          type="submit"
-          className="w-2/6 text-white py-2 px-4 rounded-full font-bold text-lg shadow-md transition-all duration-200
-          dark:text-white bg-blue-700"
-        >
-          Submit <span className="animate-pulse"></span>
-        </button>
+        
+        <div className="flex justify-center items-center">
+          <button
+            type="submit"
+            className="w-full sm:w-2/3 lg:w-2/6 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-full font-bold text-sm sm:text-base lg:text-lg shadow-md transition-all duration-200 dark:text-white bg-blue-700 hover:bg-blue-800"
+          >
+            Submit <span className="animate-pulse"></span>
+          </button>
         </div>
       </form>
     </div>

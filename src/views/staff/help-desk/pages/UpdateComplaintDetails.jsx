@@ -49,11 +49,7 @@ const UpdateComplaintDetails = () => {
       alert('Please enter a resolution.');
       return;
     }
-    if (!formData.notes.trim()) {
-      alert('Please enter notes.');
-      return;
-    }
-    navigate('/complaint-tracker', { state: { updatedComplaint: { ...complaint, ...formData } } });
+    navigate('/staff/complaints', { state: { updatedComplaint: { ...complaint, ...formData } } });
   };
 
   const statusOptions = [
