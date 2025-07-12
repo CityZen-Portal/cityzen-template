@@ -9,7 +9,7 @@ const App = () => {
   
   return (
     <Routes>
-      <Route path="citizen/*" element={<CitizenLayout />} />
+      //<Route path="citizen/*" element={<CitizenLayout />} />
       <Route path="auth/*" element={<AuthLayout />} />
       <Route path="admin/*" element={<AdminLayout />} />
       <Route path="staff/*" element={<StaffLayout />} />
