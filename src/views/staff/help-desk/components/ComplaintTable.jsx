@@ -96,7 +96,7 @@ const ComplaintTable = ({ complaints }) => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-3 sm:p-4 lg:p-6">
       {/* Filter & Search */}
       <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className='flex gap-4'>
@@ -166,58 +166,66 @@ const ComplaintTable = ({ complaints }) => {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-100 dark:bg-gray-700">
-            <tr>
-              {[
-                { label: 'Complaint ID', key: 'id' },
-                { label: 'Issue', key: 'issue' },
-                { label: 'Department', key: 'department' },
-                { label: 'Location', key: 'location' },
-                { label: 'Date Logged', key: 'dateLogged' },
-                { label: 'Status', key: 'status' },
-                { label: 'Actions', key: '' },
-              ].map(({ label, key }, idx) => (
-                <th
-                  key={idx}
-                  onClick={() => key && handleSort(key)}
-                  className={`px-6 py-4 text-left text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0 ${
-                    key ? 'cursor-pointer select-none' : ''
-                  }`}
-                >
-                  <span className="flex items-center gap-1">
-                    {label}
-                    {key && sortConfig.key === key ? (
-                      sortConfig.direction === 'asc' ? (
-                        <MdArrowUpward className="text-xs" />
-                      ) : (
-                        <MdArrowDownward className="text-xs" />
-                      )
-                    ) : (
-                      label !== 'Actions' && <MdUnfoldMore className="text-xs opacity-50" />
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          </thead>
+      <div className="overflow-x-auto -mx-3 sm:-mx-4 lg:-mx-6">
+        <div className="inline-block min-w-full align-middle">
+          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+            <table className="min-w-full divide-y divide-gray-300 dark:divide-gray-600">
+              <thead className="bg-gray-50 dark:bg-gray-700">
+                <tr>
+                  {[
+                    { label: 'ID', key: 'id' },
+                    { label: 'Issue', key: 'issue' },
+                    { label: 'Department', key: 'department' },
+                    { label: 'Location', key: 'location' },
+                    { label: 'Date', key: 'dateLogged' },
+                    { label: 'Status', key: 'status' },
+                    { label: 'Actions', key: '' },
+                  ].map(({ label, key }, idx) => (
+                    <th
+                      key={idx}
+                      onClick={() => key && handleSort(key)}
+                      className={`px-2 sm:px-3 lg:px-6 py-2 sm:py-3 lg:py-4 text-left text-xs sm:text-sm font-medium text-gray-700 dark:text-white ${
+                        key ? 'cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-gray-600' : ''
+                      } ${idx < 6 ? 'border-r border-gray-200 dark:border-gray-600' : ''}`}
+                    >
+                      <span className="flex items-center gap-1">
+                        <span className="truncate">{label}</span>
+                        {key && (
+                          <span className="flex-shrink-0">
+                            {sortConfig.key === key ? (
+                              sortConfig.direction === 'asc' ? (
+                                <MdArrowUpward className="text-xs" />
+                              ) : (
+                                <MdArrowDownward className="text-xs" />
+                              )
+                            ) : (
+                              label !== 'Actions' && <MdUnfoldMore className="text-xs opacity-50" />
+                            )}
+                          </span>
+                        )}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
 
-          <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-            <Rows 
-              complaints={paginatedComplaints}
-              getStatusColor={getStatusColor}
-              getStatusText={getStatusText}
-            />
-            {paginatedComplaints.length === 0 && (
-              <tr>
-                <td colSpan="7" className="text-center py-6 text-gray-500 dark:text-gray-300">
-                  No complaints match this filter or search.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-600">
+                <Rows 
+                  complaints={paginatedComplaints}
+                  getStatusColor={getStatusColor}
+                  getStatusText={getStatusText}
+                />
+                {paginatedComplaints.length === 0 && (
+                  <tr>
+                    <td colSpan="7" className="text-center py-8 sm:py-12 text-gray-500 dark:text-gray-300 text-sm sm:text-base">
+                      No complaints match this filter or search.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       {/* Pagination Controls */}

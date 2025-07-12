@@ -58,32 +58,32 @@ const ComplaintLog = () => {
   return (
     <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <MdTrackChanges className="text-4xl text-blue-600" />
-            Staff Complaint Tracker
+      <div className="mb-4 sm:mb-6 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <MdTrackChanges className="text-3xl sm:text-4xl text-blue-600" />
+            Tasks
           </h1>
         </div>
+      </div>
 
-        {/* Metrics Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {metrics.map(({ key, label, value, color }, index) => {
-            const Icon = iconMap[key];
-            return (
-              <div
-                key={index}
-                className={`flex items-center gap-4 p-4 rounded-lg shadow-md ${color}`}
-              >
-                {Icon && <Icon className="text-3xl" />}
-                <div>
-                  <p className="text-sm font-medium">{label}</p>
-                  <p className="text-2xl font-bold">{value}</p>
-                </div>
+      {/* Metrics Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        {metrics.map(({ key, label, value, color }, index) => {
+          const Icon = iconMap[key];
+          return (
+            <div
+              key={index}
+              className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg shadow-md ${color}`}
+            >
+              {Icon && <Icon className="text-2xl sm:text-3xl flex-shrink-0" />}
+              <div className="min-w-0 flex-1">
+                <p className="text-xs sm:text-sm font-medium truncate">{label}</p>
+                <p className="text-xl sm:text-2xl font-bold">{value}</p>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Table */}

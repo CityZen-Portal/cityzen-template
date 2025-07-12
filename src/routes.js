@@ -33,6 +33,7 @@ import StaffService from "views/staff/services";
 
 import ComplaintTracker from "views/staff/help-desk";
 import UpdateComplaintDetails from "views/staff/help-desk/pages/UpdateComplaintDetails";
+import ComplaintInfo from "views/staff/help-desk/pages/ComplaintInfo";
 
 import AddNews from "views/staff/news/components/AddNews";
 import ViewNews from "views/staff/news/components/ViewNews";
@@ -213,14 +214,14 @@ const routes = [
       {
         name: "Update Complaint Details",
         layout: "/staff",
-        path: "complaints/update-details",
+        path: "complaints/update-details/:id",
         component: <UpdateComplaintDetails />
       },
       {
         name: "View Complaint Details",
         layout: "/staff",
-        path: "complaints/view-details",
-        component: <ComplaintDetails />
+        path: "complaints/view-details/:id",
+        component: <ComplaintInfo />
       },
     ],
   },
