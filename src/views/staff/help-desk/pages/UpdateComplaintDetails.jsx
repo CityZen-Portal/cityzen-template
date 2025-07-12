@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { FaMapMarkerAlt, FaExclamationCircle, FaCamera, FaHistory } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaExclamationCircle } from 'react-icons/fa';
 
 const UpdateComplaintDetails = () => {
   const { id } = useParams();
@@ -49,11 +49,7 @@ const UpdateComplaintDetails = () => {
       alert('Please enter a resolution.');
       return;
     }
-    if (!formData.notes.trim()) {
-      alert('Please enter notes.');
-      return;
-    }
-    navigate('/complaint-tracker', { state: { updatedComplaint: { ...complaint, ...formData } } });
+    navigate('/staff/complaints', { state: { updatedComplaint: { ...complaint, ...formData } } });
   };
 
   const statusOptions = [

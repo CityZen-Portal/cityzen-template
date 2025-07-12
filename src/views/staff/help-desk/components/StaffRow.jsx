@@ -3,8 +3,8 @@ import { FaEye } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom'; // Assuming React Router is used for navigation
 
-const StaffRow = ({ complaint, setComplaints }) => {
-  const { id, citizen, issue, department, dateLogged, location, status, notes, resolution } = complaint;
+const StaffRow = ({ complaint }) => {
+  const { id, citizen, issue, department, dateLogged, location, status } = complaint;
   const navigate = useNavigate();
 
   const getStatusColor = (status) => {
@@ -35,25 +35,21 @@ const StaffRow = ({ complaint, setComplaints }) => {
     return statusMap[status] || status.charAt(0).toUpperCase() + status.slice(1);
   };
 
-  const handleEditClick = () => {
-    navigate(`/update-complaint/${id}`, { state: { complaint } });
-  };
-
   return (
     <tr className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{id}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{citizen}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{issue}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{department}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{dateLogged}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{location}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white relative">
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{id}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{citizen}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{issue}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{department}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{dateLogged}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">{location}</td>
+      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white border-r">
         <div className="flex justify-between items-center w-full">
           <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(status)} inline-flex items-center`}>
             {formatStatus(status)}
           </span>
           <button
-            onClick={handleEditClick}
+            onClick={() => navigate(`/staff/complaints/update-details`)}
             className="px-2 py-1 bg-blue-1000 text-white rounded-md hover:bg-blue-700 text-xs inline-flex items-center transition-colors duration-200"
           >
             <MdEdit className="text-sm" />
@@ -61,12 +57,13 @@ const StaffRow = ({ complaint, setComplaints }) => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-        <button className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm transition-colors duration-200">
+        <button 
+          onClick={() => navigate(``)}
+          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm transition-colors duration-200">
           <FaEye className="mr-1 text-xs" /> View
         </button>
       </td>
     </tr>
   );
 };
-
 export default StaffRow;

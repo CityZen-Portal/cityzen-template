@@ -94,14 +94,14 @@ const ComplaintTable = ({ complaints }) => {
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-3 sm:p-4 md:p-6">
       {/* Filter & Search */}
-      <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div className='flex gap-4'>
+      <div className="mb-4 space-y-4 md:space-y-0 md:flex md:items-end md:justify-between md:gap-4">
+        {/* Left side - Filters */}
+        <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 md:flex-row">
           {/* Status Filter */}
-          <div>
+          <div className="flex-1 sm:flex-none">
             <label htmlFor="statusFilter" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
               Filter by Status
             </label>
@@ -112,7 +112,7 @@ const ComplaintTable = ({ complaints }) => {
                 setStatusFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full sm:w-auto px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
             >
               <option value="">All</option>
               <option value="pending">Pending</option>
@@ -126,7 +126,7 @@ const ComplaintTable = ({ complaints }) => {
           </div>
 
           {/* Rows Per Page */}
-          <div>
+          <div className="flex-1 sm:flex-none">
             <label htmlFor="rowsPerPage" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
               Rows per page
             </label>
@@ -137,7 +137,7 @@ const ComplaintTable = ({ complaints }) => {
                 setRowsPerPage(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full sm:w-auto px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
             >
               {[5, 10, 25, 50].map(num => (
                 <option key={num} value={num}>{num}</option>
@@ -146,36 +146,36 @@ const ComplaintTable = ({ complaints }) => {
           </div>
         </div>
 
-        {/* Search Input */}
-        <div>
+        {/* Right side - Search Input */}
+        <div className="flex-1 md:flex-none md:w-72 lg:w-80">
           <label htmlFor="searchTerm" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
             Search
           </label>
           <input
             type="text"
             id="searchTerm"
-            placeholder="Search..."
+            placeholder="Search by ID, issue, or department..."
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm placeholder-gray-400 dark:placeholder-gray-500"
           />
         </div>
       </div>
 
-      
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-100 dark:bg-gray-700">
+      {/* Table Container */}
+      <div className="overflow-x-auto -mx-3 sm:mx-0 sm:rounded-lg">
+        <table className="w-full min-w-full">
+          {/* Desktop Table Header - Hidden on mobile */}
+          <thead className="bg-gray-100 dark:bg-gray-700 hidden md:table-header-group">
             <tr>
               {[
-                { label: 'Complaint ID', key: 'id' },
+                { label: 'ID', key: 'id' },
                 { label: 'Issue', key: 'issue' },
                 { label: 'Department', key: 'department' },
-                { label: 'Date Logged', key: 'dateLogged' },
+                { label: 'Date', key: 'dateLogged' },
                 { label: 'Status', key: 'status' },
                 { label: 'View', key: '' },
                 { label: 'Feedback', key: '' },
@@ -183,27 +183,42 @@ const ComplaintTable = ({ complaints }) => {
                 <th
                   key={idx}
                   onClick={() => key && handleSort(key)}
-                  className={`px-6 py-4 text-left text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0 ${
-                    key ? 'cursor-pointer select-none' : ''
+                  className={`px-4 lg:px-6 py-3 lg:py-4 text-left text-xs lg:text-sm font-medium text-gray-700 dark:text-white border-r last:border-r-0 ${
+                    key ? 'cursor-pointer select-none hover:bg-gray-200 dark:hover:bg-gray-600' : ''
                   }`}
                 >
                   <span className="flex items-center gap-1">
                     {label}
                     {key && sortConfig.key === key ? (
                       sortConfig.direction === 'asc' ? (
-                        <MdArrowUpward className="text-xs" />
+                        <MdArrowUpward className="text-xs flex-shrink-0" />
                       ) : (
-                        <MdArrowDownward className="text-xs" />
+                        <MdArrowDownward className="text-xs flex-shrink-0" />
                       )
                     ) : (
-                      label !== 'View' && label!== 'Feedback' && <MdUnfoldMore className="text-xs opacity-50" />
+                      label !== 'View' && label !== 'Feedback' && <MdUnfoldMore className="text-xs opacity-50 flex-shrink-0" />
                     )}
                   </span>
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
+
+          {/* Mobile Table Header - Only shown on mobile */}
+          <thead className="md:hidden">
+            <tr>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white bg-gray-100 dark:bg-gray-700">
+                <div className="flex items-center justify-between">
+                  <span>Complaints</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {filteredComplaints.length} results
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-600 bg-white dark:bg-gray-800">
             <Rows 
               complaints={paginatedComplaints}
               getStatusColor={getStatusColor}
@@ -211,8 +226,12 @@ const ComplaintTable = ({ complaints }) => {
             />
             {paginatedComplaints.length === 0 && (
               <tr>
-                <td colSpan="7" className="text-center py-6 text-gray-500 dark:text-gray-300">
-                  No complaints match this filter or search.
+                <td colSpan="7" className="text-center py-8 px-4 text-gray-500 dark:text-gray-300">
+                  <div className="flex flex-col items-center space-y-2">
+                    <div className="text-4xl">🔍</div>
+                    <div className="text-sm font-medium">No complaints found</div>
+                    <div className="text-xs">Try adjusting your search or filters</div>
+                  </div>
                 </td>
               </tr>
             )}

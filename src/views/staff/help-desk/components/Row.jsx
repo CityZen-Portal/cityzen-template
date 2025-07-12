@@ -56,7 +56,7 @@ const Row = ({ complaint, getStatusColor, getStatusText }) => {
             </span>
           </span>
           <button
-            onClick={() => navigate(`/admin/complaints/update/${complaint.id}`)}
+            onClick={() => navigate(`/staff/complaints/update-details/${complaint.id}`)}
             className="px-1.5 sm:px-2 py-1 bg-blue-1000 text-white rounded-md hover:bg-blue-700 text-xs inline-flex items-center transition-colors duration-200 flex-shrink-0"
             title="Edit"
           >
@@ -68,7 +68,7 @@ const Row = ({ complaint, getStatusColor, getStatusText }) => {
       {/* View Button */}
       <td className="px-2 sm:px-3 lg:px-6 py-2 sm:py-3 lg:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 dark:text-white">
         <button 
-          onClick={() => navigate(`/admin/complaints/view/${complaint.id}`)}
+          onClick={() => navigate(`/staff/complaints/view-details/${complaint.id}`)}
           className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-xs sm:text-sm transition-colors duration-200"
         >
           <FaEye className="text-xs sm:text-sm flex-shrink-0" />
