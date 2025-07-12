@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ComplaintForm({changePage}) {
+function ComplaintForm() {
   const [location, setLocation] = useState('');
   const [address, setAddress] = useState('');
   const [wardNumber, setWardNumber] = useState('');
@@ -58,16 +58,7 @@ function ComplaintForm({changePage}) {
 
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gray-100 dark:bg-navy-900 py-10">
-      <div className="absolute top-6 left-6">
-        <button
-          onClick={() => changePage("Home")}
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 shadow-md"
-        >
-        Back
-        </button>
-      </div>
-
-      <div className="bg-gray-50 dark:bg-gray-900 max-w-xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
+      <div className="bg-gray-50 dark:bg-gray-900 max-w-2xl w-full p-6 rounded-xl shadow-md text-black dark:text-white">
         <h1 className="font-bold text-center text-xl mb-4">Complaint Form</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <h2 className="font-bold text-center">Location & Address</h2>
@@ -115,8 +106,6 @@ function ComplaintForm({changePage}) {
           <h2 className="font-bold text-center pt-4">Complaint Details</h2>
 
           <div>
-            <label htmlFor="">Complaint ID</label>
-            <p>{'0001'}</p>
             <label className="block font-bold">Complaint Type</label>
             <select
               value={complaintType}

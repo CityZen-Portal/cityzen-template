@@ -6,6 +6,9 @@ import Service from "views/citizen/services";
 import HelpDesk from "views/citizen/help-desk";
 import ComplaintForm from "views/citizen/help-desk/pages/ComplaintForm";
 import ComplaintLog from "views/citizen/help-desk/pages/ComplaintLog";
+import ComplaintFeedback from "views/citizen/help-desk/pages/ComplaintFeedback";
+import ComplaintDetails from "views/citizen/help-desk/pages/ComplaintDetails";
+
 // Admin Views
 import AdminDashboard from "./views/admin/dashboard/index.jsx";
 import AdminTables from "views/admin/tables";
@@ -18,6 +21,8 @@ import ViewSchedule from "views/admin/services/component/ViewSchedule";
 import FeedbackManage from "views/admin/services/component/FeedbackManage";
 
 import ComplaintManagement from "views/admin/complaints";
+import AssignStaff from "views/admin/complaints/pages/AssignStaff";
+import ViewComplaint from "views/admin/complaints/pages/ViewComplaint";
 
 // Staff Views
 import StaffDashboard from "views/staff/dashboard";
@@ -26,10 +31,13 @@ import ManageServices from "views/admin/services/component/ManageServices";
 import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
 
+// import ComplaintTracker from "views/staff/help-desk";
+
 import AddNews from "views/staff/news/components/AddNews";
 import ViewNews from "views/staff/news/components/ViewNews";
 
 import NewsUpdate from "views/citizen/news/components/NewsUpdate"
+
 // Auth Views
 import SignIn from "views/auth/SignIn";
 
@@ -45,7 +53,9 @@ import {
   MdChatBubble,
   MdLiveHelp,
   MdAssignment,
+  MdBallot,
 } from "react-icons/md";
+import ServiceForm from "views/citizen/services/components/ServiceForm";
 
 const routes = [
   // Citizen Routes
@@ -62,6 +72,14 @@ const routes = [
     path: "Services",
     icon: <MdHome className="h-6 w-6" />,
     component: <Service />,
+    children: [
+      {
+        name: "Service List",
+        layout: "/citizen",
+        path: "Services/form/:serviceName",
+        component: <ServiceForm/>
+      }
+    ]
   },
   // Help Desk
   {
@@ -70,7 +88,6 @@ const routes = [
     path: "help-desk",
     icon: <MdLiveHelp className="h-6 w-6" />,
     component: <HelpDesk />,
-    // Define nested routes for Citizen Help Desk
     children: [
       {
         name: "Complaint Form",
@@ -83,6 +100,18 @@ const routes = [
         layout: "/citizen",
         path: "help-desk/complaint/log",
         component: <ComplaintLog />
+      },
+      {
+        name: "Feedback",
+        layout: "/citizen",
+        path: "help-desk/complaint/feedback/:id",
+        component: <ComplaintFeedback />
+      },
+      {
+        name: "View Complaint",
+        layout: "/citizen",
+        path: "help-desk/complaint/view/:id",
+        component: <ComplaintDetails />
       }
     ]
   },
@@ -138,9 +167,23 @@ const routes = [
   {
     name: "Complaint Management",
     layout: "/admin",
-    path: "complaint-management",
+    path: "complaints",
     icon: <MdAssignment className="h-6 w-6" />,
     component: <ComplaintManagement />,
+    children: [
+      {
+        name: "View Complaint",
+        layout: "/admin",
+        path: "complaints/view/:id",
+        component: <ViewComplaint />
+      },
+      {
+        name: "Edit Staff Assignment",
+        layout: "/admin",
+        path: "complaints/update/:id",
+        component: <AssignStaff />
+      },
+    ]
   },
 
   // Staff Routes
@@ -161,7 +204,6 @@ const routes = [
   },
 
   {
-
     name: "City News & Alerts",
     layout: "/staff",
     path: "news",

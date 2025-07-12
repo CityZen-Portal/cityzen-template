@@ -29,7 +29,7 @@ const FeedbackForm = () => {
     <div className="min-h-screen bg-gray-100 dark:bg-navy-900 flex items-center justify-center p-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white dark:bg-navy-700 rounded-2xl shadow-xl p-8 w-full max-w-lg"
+        className="bg-white dark:bg-navy-700 rounded-2xl shadow-xl p-8 w-full max-w-2xl	"
       >
         <h2 className="text-center font-semibold text-lg mb-6 text-black dark:text-white">
           FEEDBACK FORM
@@ -97,10 +97,10 @@ const FeedbackForm = () => {
         </div>
 
         {/* Star Rating */}
-        <label className="block mb-2 font-medium text-black dark:text-white text-center">
+        <label className="block mb-2 font-medium text-black dark:text-white">
           Rating
         </label>
-        <div className="flex justify-center space-x-3 mb-6">
+        <div className="flex space-x-10 mb-6 mx-5">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
               key={star}

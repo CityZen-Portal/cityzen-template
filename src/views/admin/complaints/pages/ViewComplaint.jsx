@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaExclamationCircle, FaCamera, FaHistory } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const ComplaintDetails = ({ complaintId = '0001' }) => {
+const ComplaintDetails = () => {
   const navigate = useNavigate()
+  const complaintId = useParams()
+  
   const [showImageModal, setShowImageModal] = useState(false);
 
   const complaintData = {
     id: '0001',
-    subject: 'Water Leakage',
+    issue: 'Water Leakage',
     department: 'Water Resource',
     dateLogged: '19/04/2025',
     status: 'pending',
+    complaintant: 'John Richard',
     location: 'Anna Nagar, Chennai',
     address: '123 Main Street, Anna Nagar',
     wardNumber: '45',
@@ -74,7 +77,7 @@ const ComplaintDetails = ({ complaintId = '0001' }) => {
                   <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
                     <FaMapMarkerAlt className="mr-2 text-blue-600" /> Location Details
                   </h2>
-                  {['location', 'address', 'wardNumber', 'pincode'].map((field) => (
+                  {['complaintant', 'location', 'address', 'wardNumber', 'pincode'].map((field) => (
                     <div key={field}>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
                         {field.replace(/([A-Z])/g, ' $1').trim()}
@@ -145,7 +148,7 @@ const ComplaintDetails = ({ complaintId = '0001' }) => {
 
             <div className="bg-white dark:bg-navy-800 rounded-xl shadow-sm p-6">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Additional Information</h2>
-              {['department', 'dateLogged', 'subject'].map((field) => (
+              {['department', 'dateLogged'].map((field) => (
                 <div key={field} className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
                     {field.replace(/([A-Z])/g, ' $1').trim()}
@@ -161,7 +164,7 @@ const ComplaintDetails = ({ complaintId = '0001' }) => {
         <div className="mt-8">
           <button
             onClick={() => {
-              navigate('/citizen/help-desk/complaint/log')
+              navigate('/admin/complaints')
               window.scrollTo(0,0)
             }}
             className="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors dark:bg-white dark:text-navy-900 dark:hover:bg-gray-200"
