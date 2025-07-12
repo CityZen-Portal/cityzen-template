@@ -31,7 +31,8 @@ import ManageServices from "views/admin/services/component/ManageServices";
 import CityNews from "views/staff/news";
 import StaffService from "views/staff/services";
 
-import ComplaintTracker from 'views/staff/help-desk/pages/ComplaintTracker'
+import ComplaintTracker from "views/staff/help-desk";
+import UpdateComplaintDetails from "views/staff/help-desk/pages/UpdateComplaintDetails";
 
 import AddNews from "views/staff/news/components/AddNews";
 import ViewNews from "views/staff/news/components/ViewNews";
@@ -208,6 +209,20 @@ const routes = [
     path: "complaints",
     icon: <MdBallot className="h-6 w-6" />,
     component: <ComplaintTracker />,
+    children: [
+      {
+        name: "Update Complaint Details",
+        layout: "/staff",
+        path: "complaints/update-details",
+        component: <UpdateComplaintDetails />
+      },
+      {
+        name: "View Complaint Details",
+        layout: "/staff",
+        path: "complaints/view-details",
+        component: <ComplaintDetails />
+      },
+    ],
   },
   {
     name: "City News & Alerts",

@@ -165,11 +165,11 @@ const AssignStaff = () => {
                     <h2 className="text-lg font-semibold mb-4 border-b pb-1 text-gray-800 dark:text-gray-100">Assignment</h2>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">Select Department</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Select Department</label>
                       <select
                         value={assignedDept}
                         onChange={handleAssignDept}
-                        className="w-full px-4 py-2 rounded-md border dark:border-gray-700 bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
                       >
                         <option value="" disabled>-- Select department --</option>
                         {deptList.map((dept) => (
@@ -180,11 +180,11 @@ const AssignStaff = () => {
 
                     {assignedDept && (
                       <div>
-                        <label className="block text-sm font-medium mb-1">Assign</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Assign</label>
                         <select
                           value={assignedStaff}
                           onChange={handleAssign}
-                          className="w-full px-4 py-2 rounded-md border dark:border-gray-700 bg-white text-gray-800 dark:bg-gray-700 dark:text-white"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
                         >
                           <option value="" disabled>-- Select staff --</option>
                           {staffList.map((staff) => (
