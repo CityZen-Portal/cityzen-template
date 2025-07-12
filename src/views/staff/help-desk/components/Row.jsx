@@ -2,7 +2,6 @@ import React from 'react';
 import { MdVisibility, MdEdit } from 'react-icons/md';
 import { FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Button from './Button';
 
 
 const Row = ({ complaint, getStatusColor, getStatusText }) => {
